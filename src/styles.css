@@ -402,6 +402,24 @@
   box-shadow: var(--shadow-warm);
 }
 
+/* Section label pill — gold tint variant (do NOT use on hero badge) */
+.label-pill-section {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(184, 146, 74, 0.10);
+  color: var(--color-gold-ink);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border: 1px solid rgba(184, 146, 74, 0.25);
+  box-shadow: var(--shadow-warm);
+}
+
 /* Lang pills — hero */
 .lang-pill {
   display: inline-flex;
