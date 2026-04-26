@@ -24,7 +24,7 @@ const baseStyle: React.CSSProperties = {
 };
 
 function MarqueeContent() {
-  const groups = [];
+  const groups: React.ReactNode[] = [];
   for (let r = 0; r < REPEAT; r++) {
     ITEMS.forEach((item, i) => {
       groups.push(
