@@ -921,3 +921,18 @@
   .hero-cta-block .magnetic { display: block; }
   .hero-cta-block .magnetic > a { display: flex; width: 100%; justify-content: center; }
 }
+
+/* Stats: number sizes */
+[data-stat-number] { font-size: 48px; }
+@media (min-width: 768px) {
+  [data-stat-number] { font-size: 64px; }
+}
+
+/* Stats: bottom border between mobile rows (first 2 cells) */
+@media (max-width: 767px) {
+  .stats-grid .stat-cell:nth-child(1),
+  .stats-grid .stat-cell:nth-child(2) {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
