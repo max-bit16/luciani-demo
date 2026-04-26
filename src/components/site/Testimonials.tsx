@@ -57,12 +57,12 @@ export function Testimonials() {
     if (index === displayIndex) return;
     // Start exit animation on the currently displayed card
     setPhase("out");
-    const outDuration = 400;
-    const gap = 50;
+    const outDuration = 420;
+    const gap = 80;
     const t = window.setTimeout(() => {
       setDisplayIndex(index);
       setPhase("in");
-    }, outDuration - gap); // next enters as current finishes (gap between out & in)
+    }, outDuration + gap); // wait for out to fully finish + a small gap before in
     return () => window.clearTimeout(t);
   }, [index, displayIndex]);
 
