@@ -31,5 +31,13 @@
 /*.webp
   Cache-Control: public, max-age=31536000, immutable
 
+# Vite emits hashed bundles + assets here (content-addressed → immutable safe).
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Optimized hero photos under public/images/ keep the same long-cache policy.
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /sitemap.xml
   Cache-Control: public, max-age=86400, s-maxage=86400
