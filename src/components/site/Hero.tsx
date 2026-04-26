@@ -196,6 +196,8 @@ export function Hero() {
             style={{
               color: "var(--ink-2)",
               ["--enter-delay" as string]: "380ms",
+              textShadow:
+                "0 1px 2px rgba(255,255,255,0.95), 0 0 12px rgba(255,255,255,0.85), 0 0 24px rgba(255,255,255,0.7)",
             } as React.CSSProperties}
           >
             Cabinet d'avocats à Dudelange, au cœur du Grand-Duché de Luxembourg.
