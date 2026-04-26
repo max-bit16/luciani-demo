@@ -23,15 +23,48 @@ const blocs: { Icon: LucideIcon; title: string; body: string }[] = [
   },
 ];
 
+function Bloc({
+  Icon,
+  title,
+  body,
+  delay,
+}: {
+  Icon: LucideIcon;
+  title: string;
+  body: string;
+  delay: number;
+}) {
+  const ref = useReveal<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className="reveal flex gap-4 items-start"
+      style={{ ["--delay" as string]: `${delay}ms` }}
+    >
+      <Icon
+        className="w-5 h-5 flex-shrink-0 mt-1"
+        style={{ color: "var(--ink-3)" }}
+      />
+      <div>
+        <h3 className="t-h3">{title}</h3>
+        <p className="t-body mt-2" style={{ color: "var(--ink-2)" }}>
+          {body}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function Approche() {
   const txt = useReveal<HTMLDivElement>();
   const img = useReveal<HTMLDivElement>();
   return (
     <section
-      className="py-28 md:py-36"
+      className="relative overflow-hidden py-28 md:py-36"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="container-x">
+      <span className="deco-number" aria-hidden="true">03</span>
+      <div className="container-x relative" style={{ zIndex: 1 }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div ref={txt} className="reveal flex flex-col gap-6">
             <span className="label-pill self-start">Notre approche</span>
@@ -40,29 +73,15 @@ export function Approche() {
             </H2Reveal>
 
             <div className="flex flex-col gap-10 mt-4">
-              {blocs.map(({ Icon, title, body }) => (
-                <div key={title} className="flex gap-4 items-start">
-                  <Icon
-                    className="w-5 h-5 flex-shrink-0 mt-1"
-                    style={{ color: "var(--ink-3)" }}
-                  />
-                  <div>
-                    <h3 className="t-h3">{title}</h3>
-                    <p
-                      className="t-body mt-2"
-                      style={{ color: "var(--ink-2)" }}
-                    >
-                      {body}
-                    </p>
-                  </div>
-                </div>
+              {blocs.map((b, i) => (
+                <Bloc key={b.title} {...b} delay={i * 150} />
               ))}
             </div>
           </div>
 
           <div
             ref={img}
-            className="reveal-right relative overflow-hidden"
+            className="reveal-right zoom-wrap relative"
             style={{
               borderRadius: "20px",
               aspectRatio: "3 / 4",
