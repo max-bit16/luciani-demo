@@ -844,8 +844,8 @@
   from { opacity: 1; transform: translateX(0); }
   to   { opacity: 0; transform: translateX(-12px); }
 }
-.testimonial-card.is-in  { animation: testimonial-in 400ms ease both; }
-.testimonial-card.is-out { animation: testimonial-out 400ms ease both; }
+.testimonial-card.is-in  { animation: testimonial-in 420ms ease both; }
+.testimonial-card.is-out { animation: testimonial-out 420ms ease both; }
 
 /* Contact info-card warm glow */
 .info-card {
