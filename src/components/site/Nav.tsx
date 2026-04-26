@@ -9,6 +9,7 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (open) {
@@ -21,14 +22,21 @@ export function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 w-full"
+      className="fixed top-0 left-0 right-0 z-50 w-full nav-shell"
       style={{
-        backgroundColor: "rgba(255,255,255,0.9)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderBottom: "1px solid rgba(0,0,0,0.05)",
+        backgroundColor: scrolled ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0)",
+        backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
+        WebkitBackdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
+        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.05)" : "1px solid rgba(0,0,0,0)",
         height: "64px",
       }}
     >
