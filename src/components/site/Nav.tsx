@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -63,6 +63,7 @@ export function Nav() {
         backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
         WebkitBackdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
         borderBottom: scrolled ? "1px solid rgba(0,0,0,0.05)" : "1px solid rgba(0,0,0,0)",
+        boxShadow: scrolled ? "rgba(0,0,0,0.04) 0px 4px 4px" : "none",
         height: "64px",
       }}
     >
@@ -108,54 +109,82 @@ export function Nav() {
       </div>
 
       {/* Mobile drawer */}
-      {open && (
-        <div
-          className="lg:hidden fixed inset-0 z-50"
-          onClick={() => setOpen(false)}
-          style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
-        >
-          <aside
-            className="absolute top-0 right-0 h-full w-[80%] max-w-[360px] bg-white p-6 flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-            style={{ boxShadow: "var(--shadow-card-hover)" }}
-          >
-            <div className="flex items-center justify-between mb-10">
-              <span className="font-display text-[20px]" style={{ color: "#000" }}>
-                Étude Luciani
-              </span>
-              <button
-                type="button"
-                aria-label="Fermer le menu"
-                onClick={() => setOpen(false)}
-                className="w-10 h-10 inline-flex items-center justify-center rounded-full"
-                style={{ color: "#000" }}
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <nav className="flex flex-col gap-6">
-              {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  className="t-nav"
-                  style={{ color: "#000" }}
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </a>
-              ))}
-              <a
-                href="tel:+35220331456"
-                className="pill-black mt-4 self-start"
-                onClick={() => setOpen(false)}
-              >
-                Prendre rendez-vous
-              </a>
-            </nav>
-          </aside>
-        </div>
-      )}
+      <MobileDrawer open={open} onClose={() => setOpen(false)} />
     </header>
+  );
+}
+
+function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+  const [animOpen, setAnimOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      if (closeTimer.current) {
+        window.clearTimeout(closeTimer.current);
+        closeTimer.current = null;
+      }
+      setMounted(true);
+      // next frame, trigger transition to open
+      const id = requestAnimationFrame(() => setAnimOpen(true));
+      return () => cancelAnimationFrame(id);
+    } else if (mounted) {
+      setAnimOpen(false);
+      closeTimer.current = window.setTimeout(() => {
+        setMounted(false);
+        closeTimer.current = null;
+      }, 360);
+    }
+    return undefined;
+  }, [open, mounted]);
+
+  if (!mounted) return null;
+
+  return (
+    <div
+      className={`lg:hidden fixed inset-0 z-50 drawer-backdrop ${animOpen ? "open" : ""}`}
+      onClick={onClose}
+    >
+      <aside
+        className={`absolute top-0 right-0 h-full w-[80%] max-w-[360px] bg-white p-6 flex flex-col drawer-panel ${animOpen ? "open" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+        style={{ boxShadow: "var(--shadow-card-hover)" }}
+      >
+        <div className="flex items-center justify-between mb-10">
+          <span className="font-display text-[20px]" style={{ color: "#000" }}>
+            Étude Luciani
+          </span>
+          <button
+            type="button"
+            aria-label="Fermer le menu"
+            onClick={onClose}
+            className="w-10 h-10 inline-flex items-center justify-center rounded-full"
+            style={{ color: "#000" }}
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        <nav className="flex flex-col">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="drawer-link"
+              onClick={onClose}
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="tel:+35220331456"
+            className="pill-black mt-6 self-start"
+            onClick={onClose}
+          >
+            Prendre rendez-vous
+          </a>
+        </nav>
+      </aside>
+    </div>
   );
 }
