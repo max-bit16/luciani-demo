@@ -31,7 +31,7 @@ export function Profil() {
           </div>
 
           <div ref={txt} className="reveal flex flex-col gap-6">
-            <span className="label-pill self-start">Votre avocat</span>
+            <span className="label-pill-section self-start">Votre avocat</span>
             <H2Reveal className="t-h2">Maître Tom Luciani</H2Reveal>
             <p className="t-editorial">
               Avocat à la Cour · Barreau de Luxembourg
@@ -44,8 +44,8 @@ export function Profil() {
               contentieux.
             </p>
             <p className="t-body" style={{ color: "var(--ink-2)" }}>
-              En novembre 2014, il fonde son cabinet à Dudelange — quatrième
-              ville du Grand-Duché — à distance optimale des juridictions de
+              En novembre 2014, il fonde son cabinet à Dudelange, quatrième
+              ville du Grand-Duché, à distance optimale des juridictions de
               Luxembourg et du Tribunal d'Esch-sur-Alzette. Titulaire d'une
               maîtrise en Droit Privé et Études Européennes, Université Robert
               Schumann de Strasbourg.
@@ -59,7 +59,7 @@ export function Profil() {
             </div>
 
             <p className="t-caption" style={{ color: "var(--ink-3)" }}>
-              — Maîtrise Droit Privé & Études Européennes, Université Robert
+              Maîtrise Droit Privé & Études Européennes, Université Robert
               Schumann, Strasbourg
             </p>
           </div>
