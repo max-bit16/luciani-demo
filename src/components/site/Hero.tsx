@@ -143,7 +143,7 @@ export function Hero() {
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.88) 18%, rgba(255,255,255,0.70) 32%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.90) 65%, rgba(255,255,255,0.98) 100%)",
+              "linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 18%, rgba(255,255,255,0.20) 38%, rgba(255,255,255,0.10) 55%, rgba(255,255,255,0.65) 78%, rgba(255,255,255,0.92) 100%)",
           }}
         />
         <div
