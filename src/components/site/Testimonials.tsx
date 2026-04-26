@@ -167,7 +167,7 @@ export function Testimonials() {
 
               <div className="flex items-center gap-3 mt-6">
                 <span
-                  className="inline-flex items-center justify-center"
+                  className="inline-flex items-center justify-center flex-shrink-0"
                   style={{
                     width: "36px",
                     height: "36px",
