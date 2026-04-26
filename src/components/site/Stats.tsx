@@ -48,7 +48,7 @@ function Stat({
 export function Stats() {
   return (
     <section
-      style={{ backgroundColor: "#F4ECDD" }}
+      style={{ backgroundColor: "#ffffff" }}
       className="relative overflow-hidden py-20 md:py-28 lg:py-32"
     >
       <span
