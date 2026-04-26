@@ -26,23 +26,6 @@ export function H2Reveal({
     return () => obs.disconnect();
   }, []);
 
-  // Wrap each line (ReactNode children may include <br/>). We split text nodes by lines.
-  const wrapNode = (node: ReactNode, key: number): ReactNode => {
-    if (typeof node === "string") {
-      const lines = node.split(/\n/);
-      return lines.map((line, i) => (
-        <span key={`${key}-${i}`} className="h2-clip">
-          <span>{line}</span>
-        </span>
-      ));
-    }
-    return (
-      <span key={key} className="h2-clip">
-        <span>{node}</span>
-      </span>
-    );
-  };
-
   const arr = Array.isArray(children) ? children : [children];
   return (
     <h2 ref={ref} className={className}>
