@@ -1,19 +1,53 @@
-const TEXT =
-  "Droit Civil · Droit Pénal · Droit Commercial · Immigration · Luxembourg · Depuis 2007 · Barreau de Luxembourg · Dudelange · ";
+const ITEMS = [
+  "Droit Civil",
+  "Droit Pénal",
+  "Droit Commercial",
+  "Immigration",
+  "Luxembourg",
+  "Depuis 2007",
+  "Barreau de Luxembourg",
+  "Dudelange",
+];
 
-const FULL = TEXT.repeat(6);
+const REPEAT = 6;
 
-const spanStyle: React.CSSProperties = {
+const baseStyle: React.CSSProperties = {
   fontFamily: "var(--font-sans)",
   fontWeight: 500,
   fontSize: "12px",
   textTransform: "uppercase",
   letterSpacing: "0.2em",
-  color: "#777169",
   whiteSpace: "nowrap",
-  paddingRight: "3rem",
   flex: "0 0 auto",
+  display: "inline-flex",
+  alignItems: "center",
 };
+
+function MarqueeContent() {
+  const groups = [];
+  for (let r = 0; r < REPEAT; r++) {
+    ITEMS.forEach((item, i) => {
+      groups.push(
+        <span
+          key={`${r}-w-${i}`}
+          style={{ ...baseStyle, color: "#777169", paddingRight: "0.9rem" }}
+        >
+          {item}
+        </span>
+      );
+      groups.push(
+        <span
+          key={`${r}-s-${i}`}
+          style={{ ...baseStyle, color: "#B8924A", paddingRight: "0.9rem" }}
+          aria-hidden="true"
+        >
+          ·
+        </span>
+      );
+    });
+  }
+  return <>{groups}</>;
+}
 
 export function Marquee() {
   return (
@@ -35,8 +69,8 @@ export function Marquee() {
           paddingBottom: "1rem",
         }}
       >
-        <span style={spanStyle}>{FULL}</span>
-        <span style={spanStyle}>{FULL}</span>
+        <MarqueeContent />
+        <MarqueeContent />
       </div>
     </div>
   );
