@@ -534,7 +534,7 @@
   pointer-events: none;
   transform-origin: left center;
   transform: scaleX(0);
-  will-change: width;
+  will-change: transform;
 }
 
 /* 2. Hero entrance sequence */
