@@ -10,7 +10,7 @@ export function ScrollProgress() {
       if (!el) return;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      el.style.width = ratio * 100 + "%";
+      el.style.transform = `scaleX(${ratio})`;
       ticking = false;
     };
     const onScroll = () => {
