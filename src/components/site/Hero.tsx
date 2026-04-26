@@ -28,6 +28,12 @@ const heroMobileJpgSrcSet = [
 // image takes over, so we only need to cover the mobile range here.
 const heroMobileSizes = "(max-width: 767px) 100vw, 0px";
 
+// Tiny blurred placeholder (~340B) inlined as a data URL. Painted as the
+// parallax-wrap background so the hero never flashes empty while the real
+// hero photo is still streaming in. Real <img> covers it on load.
+const HERO_LQIP =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCAAQABgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQF/8QAHhAAAgIDAQADAAAAAAAAAAAAAQIAEQMEEiEFMWH/xAAVAQEBAAAAAAAAAAAAAAAAAAACAf/EABYRAQEBAAAAAAAAAAAAAAAAAAAREv/aAAwDAQACEQMRAD8AsxanPqwVxdFeh0JnYvlnC0TZkubbLZC6mmP3DqliL9sFlZFPsTLyb71+1VxCr//Z";
+
 const H1_LINE_1 = "Défendre vos intérêts";
 const H1_LINE_2 = "au Grand-Duché";
 
@@ -38,6 +44,11 @@ const hideOnError: React.ReactEventHandler<HTMLImageElement> = (e) => {
   const img = e.currentTarget;
   img.style.visibility = "hidden";
   img.setAttribute("data-failed", "true");
+};
+
+// Fade the loaded image in over the LQIP backdrop.
+const fadeInOnLoad: React.ReactEventHandler<HTMLImageElement> = (e) => {
+  e.currentTarget.style.opacity = "1";
 };
 
 export function Hero() {
@@ -92,10 +103,11 @@ export function Hero() {
         ref={parallaxRef}
         className="absolute inset-0 parallax-wrap hero-bg"
         style={{
-          backgroundImage: `url(${heroMobileJpg768})`,
+          backgroundImage: `url("${HERO_LQIP}")`,
           backgroundSize: "cover",
           backgroundPosition: "center 70%",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "#cdb89a",
         }}
       >
         <picture>
@@ -117,13 +129,18 @@ export function Hero() {
             sizes={heroMobileSizes}
             alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
             className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
-            style={{ objectPosition: "center 70%" }}
+            style={{
+              objectPosition: "center 70%",
+              opacity: 0,
+              transition: "opacity 400ms ease-out",
+            }}
             loading="eager"
             decoding="async"
             fetchPriority="high"
             width={1920}
             height={1280}
             onError={hideOnError}
+            onLoad={fadeInOnLoad}
           />
         </picture>
         <img
@@ -134,10 +151,12 @@ export function Hero() {
           aria-hidden="true"
           className="hidden md:block absolute inset-0 w-full h-full object-cover object-right kenburns"
           loading="eager"
+          style={{ opacity: 0, transition: "opacity 400ms ease-out" }}
           decoding="async"
           width={1920}
           height={1280}
           onError={hideOnError}
+          onLoad={fadeInOnLoad}
         />
         <div
           className="absolute inset-0 md:hidden"
