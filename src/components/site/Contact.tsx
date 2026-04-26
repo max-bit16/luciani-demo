@@ -86,7 +86,7 @@ export function Contact() {
             ref={head}
             className="reveal text-center mb-16 flex flex-col items-center gap-5"
           >
-            <span className="label-pill">Contact</span>
+            <span className="label-pill-section">Contact</span>
             <H2Reveal className="t-h2">Consultations sur rendez-vous</H2Reveal>
             <p
               className="t-body-lg max-w-lg mx-auto"
@@ -142,7 +142,7 @@ export function Contact() {
               </span>
               <p
                 className="font-display mt-3"
-                style={{ fontSize: "32px", color: "#000", fontWeight: 300 }}
+                style={{ fontSize: "32px", color: "#B8924A", fontWeight: 300 }}
               >
                 20 33 14 56
               </p>
@@ -187,7 +187,7 @@ export function Contact() {
           <div ref={note} className="reveal text-center mt-12">
             <p className="t-caption" style={{ color: "var(--ink-3)" }}>
               Cabinet opérant en collaboration avec l'Étude Majerus,
-              Esch-sur-Alzette · Fax : 26 52 10 34
+              Esch-sur-Alzette
             </p>
           </div>
         </div>
