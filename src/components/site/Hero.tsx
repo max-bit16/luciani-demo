@@ -54,13 +54,20 @@ export function Hero() {
       style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}
     >
       <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
-        <img
-          src="/images/luxembourg-hero-mobile.jpg"
-          alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
-          className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
-          style={{ objectPosition: "center 70%" }}
-          loading="eager"
-        />
+        <picture className="block md:hidden absolute inset-0 w-full h-full">
+          <source srcSet="/images/luxembourg-hero-mobile.webp" type="image/webp" />
+          <img
+            src="/images/luxembourg-hero-mobile.jpg"
+            alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
+            className="absolute inset-0 w-full h-full object-cover kenburns"
+            style={{ objectPosition: "center 70%" }}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            width={1920}
+            height={1280}
+          />
+        </picture>
         <img
           src="https://source.unsplash.com/vBKCJbjH8cs/1920x1080"
           alt="Architecture contemporaine de la Philharmonie de Luxembourg"
@@ -71,7 +78,7 @@ export function Hero() {
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 22%, rgba(255,255,255,0.30) 38%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.96) 100%)",
+              "linear-gradient(to bottom, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.88) 18%, rgba(255,255,255,0.70) 32%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.90) 65%, rgba(255,255,255,0.98) 100%)",
           }}
         />
         <div
