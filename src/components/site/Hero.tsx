@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useParallax } from "@/hooks/useParallax";
 import { Magnetic } from "@/components/anim/Magnetic";
+import heroMobileJpg from "@/assets/luxembourg-hero-mobile.jpg";
+import heroMobileWebp from "@/assets/luxembourg-hero-mobile.webp";
 
 const H1_LINE_1 = "Défendre vos intérêts";
 const H1_LINE_2 = "au Grand-Duché";
@@ -54,12 +56,13 @@ export function Hero() {
       style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}
     >
       <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
-        <picture className="block md:hidden absolute inset-0 w-full h-full">
-          <source srcSet="/images/luxembourg-hero-mobile.webp" type="image/webp" />
+        <picture>
+          <source srcSet={heroMobileWebp} type="image/webp" media="(max-width: 767px)" />
+          <source srcSet={heroMobileJpg} type="image/jpeg" media="(max-width: 767px)" />
           <img
-            src="/images/luxembourg-hero-mobile.jpg"
+            src={heroMobileJpg}
             alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
-            className="absolute inset-0 w-full h-full object-cover kenburns"
+            className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
             style={{ objectPosition: "center 70%" }}
             loading="eager"
             decoding="async"
