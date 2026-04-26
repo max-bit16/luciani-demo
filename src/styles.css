@@ -852,22 +852,7 @@
   position: relative;
   overflow: hidden;
 }
-.info-card .glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 300ms ease;
-  background: radial-gradient(
-    circle at var(--mx, 50%) var(--my, 50%),
-    rgba(245, 242, 239, 0.7) 0%,
-    transparent 65%
-  );
-}
-.info-card.glow-on .glow { opacity: 1; }
-.info-card > *:not(.glow) {
+.info-card > * {
   position: relative;
   z-index: 1;
 }
