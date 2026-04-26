@@ -3,7 +3,6 @@ import { useReveal } from "@/hooks/useReveal";
 import { useTilt } from "@/hooks/useTilt";
 import { H2Reveal } from "@/components/anim/H2Reveal";
 import { useIsTouch } from "@/hooks/useIsTouch";
-import { SectionDivider } from "@/components/anim/SectionDivider";
 
 type Card = {
   Icon: LucideIcon;
@@ -106,7 +105,6 @@ export function Domaines() {
     >
       <span className="deco-number" aria-hidden="true">01</span>
       <div className="container-x relative" style={{ zIndex: 1 }}>
-        <SectionDivider />
         <div ref={head} className="reveal text-center mb-16 flex flex-col items-center gap-5">
           <span className="label-pill">Nos domaines</span>
           <H2Reveal className="t-h2 max-w-2xl">
