@@ -58,7 +58,7 @@ export function Hero() {
           src="/images/luxembourg-hero-mobile.jpg"
           alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
           className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
-          style={{ objectPosition: "center center" }}
+          style={{ objectPosition: "center 70%" }}
           loading="eager"
         />
         <img
@@ -71,7 +71,7 @@ export function Hero() {
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.50) 70%, rgba(255,255,255,0.20) 100%)",
+              "linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 22%, rgba(255,255,255,0.30) 38%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.96) 100%)",
           }}
         />
         <div
