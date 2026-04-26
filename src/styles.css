@@ -518,11 +518,12 @@
   top: 0;
   left: 0;
   height: 2px;
-  width: 0;
+  width: 100%;
   background: #000000;
-  z-index: 100;
+  z-index: 101;
   pointer-events: none;
   transform-origin: left center;
+  transform: scaleX(0);
   will-change: width;
 }
 
