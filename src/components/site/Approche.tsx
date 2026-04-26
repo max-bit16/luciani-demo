@@ -38,7 +38,7 @@ function Bloc({
   return (
     <div
       ref={ref}
-      className="reveal flex gap-4 items-start"
+      className="reveal approche-bloc flex gap-4 items-start"
       style={{ ["--delay" as string]: `${delay}ms` }}
     >
       <Icon
