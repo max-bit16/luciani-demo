@@ -936,3 +936,54 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 }
+
+/* Domaines: service card padding on mobile */
+@media (max-width: 767px) {
+  .service-card { padding: 24px; }
+  .service-card .t-h3 { font-size: 26px; }
+  .service-card li { font-size: 14px; }
+}
+
+/* Profil / Approche image aspect ratios */
+.profil-image { aspect-ratio: 3 / 2; }
+@media (min-width: 768px) {
+  .profil-image { aspect-ratio: 4 / 3; }
+}
+.approche-image { aspect-ratio: 4 / 3; }
+@media (min-width: 768px) {
+  .approche-image { aspect-ratio: 3 / 4; }
+}
+
+/* Approche bloc icon size on mobile */
+@media (max-width: 767px) {
+  .approche-bloc { gap: 0.75rem; }
+  .approche-bloc svg { width: 1rem; height: 1rem; }
+}
+
+/* Testimonial mobile */
+@media (max-width: 767px) {
+  .testimonial-card { padding: 24px !important; }
+  .testimonial-quote-mark {
+    font-size: 64px !important;
+    top: 16px !important;
+    left: 20px !important;
+  }
+  .testimonial-quote-text { font-size: 16px !important; }
+  .testimonial-author-name { font-size: 18px !important; }
+}
+
+/* Contact: pill full-width on mobile */
+@media (max-width: 767px) {
+  .contact-cta-block .magnetic { display: block; }
+  .contact-cta-block .magnetic > a { display: flex; width: 100%; justify-content: center; }
+}
+
+/* Footer mobile: stack and left-align */
+@media (max-width: 767px) {
+  .footer-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .footer-grid .footer-right { text-align: left !important; }
+}
