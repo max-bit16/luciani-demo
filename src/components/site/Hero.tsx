@@ -3,6 +3,30 @@ import { useParallax } from "@/hooks/useParallax";
 import { Magnetic } from "@/components/anim/Magnetic";
 import heroMobileJpg from "@/assets/luxembourg-hero-mobile.jpg";
 import heroMobileWebp from "@/assets/luxembourg-hero-mobile.webp";
+import heroMobileJpg480 from "@/assets/luxembourg-hero-mobile-480.jpg";
+import heroMobileJpg768 from "@/assets/luxembourg-hero-mobile-768.jpg";
+import heroMobileJpg1280 from "@/assets/luxembourg-hero-mobile-1280.jpg";
+import heroMobileWebp480 from "@/assets/luxembourg-hero-mobile-480.webp";
+import heroMobileWebp768 from "@/assets/luxembourg-hero-mobile-768.webp";
+import heroMobileWebp1280 from "@/assets/luxembourg-hero-mobile-1280.webp";
+
+const heroMobileWebpSrcSet = [
+  `${heroMobileWebp480} 480w`,
+  `${heroMobileWebp768} 768w`,
+  `${heroMobileWebp1280} 1280w`,
+  `${heroMobileWebp} 1920w`,
+].join(", ");
+
+const heroMobileJpgSrcSet = [
+  `${heroMobileJpg480} 480w`,
+  `${heroMobileJpg768} 768w`,
+  `${heroMobileJpg1280} 1280w`,
+  `${heroMobileJpg} 1920w`,
+].join(", ");
+
+// Hero is full viewport width on mobile (<768px). Above that the desktop
+// image takes over, so we only need to cover the mobile range here.
+const heroMobileSizes = "(max-width: 767px) 100vw, 0px";
 
 const H1_LINE_1 = "Défendre vos intérêts";
 const H1_LINE_2 = "au Grand-Duché";
@@ -57,10 +81,22 @@ export function Hero() {
     >
       <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
         <picture>
-          <source srcSet={heroMobileWebp} type="image/webp" media="(max-width: 767px)" />
-          <source srcSet={heroMobileJpg} type="image/jpeg" media="(max-width: 767px)" />
+          <source
+            type="image/webp"
+            media="(max-width: 767px)"
+            srcSet={heroMobileWebpSrcSet}
+            sizes={heroMobileSizes}
+          />
+          <source
+            type="image/jpeg"
+            media="(max-width: 767px)"
+            srcSet={heroMobileJpgSrcSet}
+            sizes={heroMobileSizes}
+          />
           <img
-            src={heroMobileJpg}
+            src={heroMobileJpg768}
+            srcSet={heroMobileJpgSrcSet}
+            sizes={heroMobileSizes}
             alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
             className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
             style={{ objectPosition: "center 70%" }}
