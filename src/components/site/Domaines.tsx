@@ -1,5 +1,7 @@
 import { Scale, Shield, Briefcase, Building2, type LucideIcon } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { useTilt } from "@/hooks/useTilt";
+import { H2Reveal } from "@/components/anim/H2Reveal";
 
 type Card = {
   Icon: LucideIcon;
@@ -55,15 +57,23 @@ const cards: Card[] = [
 ];
 
 function ServiceCard({ card, delay }: { card: Card; delay: number }) {
-  const ref = useReveal<HTMLDivElement>();
+  const revealRef = useReveal<HTMLDivElement>();
+  const tilt = useTilt<HTMLDivElement>();
   const { Icon, title, subtitle, bullets } = card;
   return (
     <div
-      ref={ref}
+      ref={(el) => {
+        revealRef.current = el;
+        tilt.ref.current = el;
+      }}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
       className="reveal service-card flex flex-col"
       style={{ ["--delay" as string]: `${delay}ms` }}
     >
-      <Icon className="w-6 h-6 mb-5" />
+      <span className="icon-wrap">
+        <Icon className="w-6 h-6" />
+      </span>
       <h3 className="t-h3">{title}</h3>
       <p className="t-body-ui mt-2" style={{ color: "var(--ink-2)" }}>
         {subtitle}
@@ -94,11 +104,9 @@ export function Domaines() {
       <div className="container-x">
         <div ref={head} className="reveal text-center mb-16 flex flex-col items-center gap-5">
           <span className="label-pill">Nos domaines</span>
-          <h2 className="t-h2 max-w-2xl">
-            Une expertise complète
-            <br />
-            pour chaque situation
-          </h2>
+          <H2Reveal className="t-h2 max-w-2xl">
+            {["Une expertise complète", <br key="br" />, "pour chaque situation"]}
+          </H2Reveal>
           <p
             className="t-body-lg max-w-xl mx-auto"
             style={{ color: "var(--ink-2)" }}

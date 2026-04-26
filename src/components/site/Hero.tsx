@@ -1,12 +1,46 @@
-import { useReveal } from "@/hooks/useReveal";
+import { useEffect, useRef, useState } from "react";
+import { useParallax } from "@/hooks/useParallax";
+import { Magnetic } from "@/components/anim/Magnetic";
+
+const H1_LINE_1 = "Défendre vos intérêts";
+const H1_LINE_2 = "au Grand-Duché";
 
 export function Hero() {
-  const r1 = useReveal<HTMLDivElement>();
-  const r2 = useReveal<HTMLHeadingElement>();
-  const r3 = useReveal<HTMLParagraphElement>();
-  const r4 = useReveal<HTMLDivElement>();
-  const r5 = useReveal<HTMLDivElement>();
-  const r6 = useReveal<HTMLParagraphElement>();
+  const [entered, setEntered] = useState(false);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+  const parallaxRef = useParallax<HTMLDivElement>(0.15, 80);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setEntered(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  useEffect(() => {
+    if (!entered) return;
+    const el = h1Ref.current;
+    if (!el) return;
+    el.querySelectorAll<HTMLElement>(".word-reveal").forEach((w) =>
+      w.classList.add("entered")
+    );
+  }, [entered]);
+
+  const renderLine = (line: string, startIndex: number) =>
+    line.split(" ").map((word, i) => {
+      const idx = startIndex + i;
+      return (
+        <span
+          key={`${idx}-${word}`}
+          className="word-reveal"
+          style={{ ["--delay" as string]: `${idx * 60}ms` }}
+        >
+          <span>{word}</span>
+        </span>
+      );
+    });
+
+  const line1Words = H1_LINE_1.split(" ");
+  const renderWordsWithSpaces = (words: React.ReactNode[]) =>
+    words.flatMap((node, i) => (i === 0 ? [node] : [" ", node]));
 
   return (
     <section
@@ -14,11 +48,11 @@ export function Hero() {
       className="relative overflow-hidden"
       style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}
     >
-      <div className="absolute inset-0">
+      <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
         <img
           src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&q=80&auto=format&fit=crop"
           alt="Vue de la Philharmonie et du quartier financier de Luxembourg"
-          className="w-full h-full object-cover object-right"
+          className="w-full h-full object-cover object-right kenburns"
           loading="eager"
         />
         <div
@@ -35,46 +69,67 @@ export function Hero() {
         style={{ minHeight: "100vh", paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "96px", paddingBottom: "64px" }}
       >
         <div className="md:pl-10 flex flex-col gap-8">
-          <div ref={r1} className="reveal">
+          <div
+            className={`hero-enter ${entered ? "entered" : ""}`}
+            style={{ ["--enter-delay" as string]: "80ms" } as React.CSSProperties}
+          >
             <span className="label-pill">Barreau de Luxembourg · Depuis 2007</span>
           </div>
 
-          <h1 ref={r2} className="reveal t-h1">
-            Défendre vos intérêts
+          <h1
+            ref={h1Ref}
+            className={`hero-enter ${entered ? "entered" : ""} t-h1`}
+            style={{ ["--enter-delay" as string]: "200ms" } as React.CSSProperties}
+          >
+            {renderWordsWithSpaces(renderLine(H1_LINE_1, 0))}
             <br />
-            au Grand-Duché
+            {renderWordsWithSpaces(renderLine(H1_LINE_2, line1Words.length))}
           </h1>
 
           <p
-            ref={r3}
-            className="reveal t-body-lg"
-            style={{ color: "var(--ink-2)" }}
+            className={`hero-enter ${entered ? "entered" : ""} t-body-lg`}
+            style={{
+              color: "var(--ink-2)",
+              ["--enter-delay" as string]: "380ms",
+            } as React.CSSProperties}
           >
             Cabinet d'avocats à Dudelange, au cœur du Grand-Duché de Luxembourg.
             Droit civil, pénal, commercial et administratif. Consultations en
             luxembourgeois, français, allemand ou anglais.
           </p>
 
-          <div ref={r4} className="reveal flex gap-2 flex-wrap">
+          <div
+            className={`hero-enter ${entered ? "entered" : ""} flex gap-2 flex-wrap`}
+            style={{ ["--enter-delay" as string]: "500ms" } as React.CSSProperties}
+          >
             <span className="lang-pill">🇱🇺 LU</span>
             <span className="lang-pill">🇫🇷 FR</span>
             <span className="lang-pill">🇩🇪 DE</span>
             <span className="lang-pill">🇬🇧 EN</span>
           </div>
 
-          <div ref={r5} className="reveal flex gap-3 flex-wrap">
-            <a href="tel:+35220331456" className="pill-black">
-              Prendre rendez-vous
-            </a>
-            <a href="#domaines" className="pill-warm">
-              Nos domaines
-            </a>
+          <div
+            className={`hero-enter ${entered ? "entered" : ""} flex gap-3 flex-wrap`}
+            style={{ ["--enter-delay" as string]: "610ms" } as React.CSSProperties}
+          >
+            <Magnetic>
+              <a href="tel:+35220331456" className="pill-black">
+                Prendre rendez-vous
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href="#domaines" className="pill-warm">
+                Nos domaines
+              </a>
+            </Magnetic>
           </div>
 
           <p
-            ref={r6}
-            className="reveal t-caption"
-            style={{ color: "var(--ink-3)" }}
+            className={`hero-enter ${entered ? "entered" : ""} t-caption`}
+            style={{
+              color: "var(--ink-3)",
+              ["--enter-delay" as string]: "710ms",
+            } as React.CSSProperties}
           >
             40, rue du Commerce · L-3450 Dudelange
             <br />

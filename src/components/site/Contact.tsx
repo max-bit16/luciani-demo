@@ -1,5 +1,6 @@
 import { MapPin, Phone, Clock } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { H2Reveal } from "@/components/anim/H2Reveal";
 
 function InfoCard({
   delay,
@@ -44,7 +45,7 @@ export function Contact() {
             className="reveal text-center mb-16 flex flex-col items-center gap-5"
           >
             <span className="label-pill">Contact</span>
-            <h2 className="t-h2">Consultations sur rendez-vous</h2>
+            <H2Reveal className="t-h2">Consultations sur rendez-vous</H2Reveal>
             <p
               className="t-body-lg max-w-lg mx-auto"
               style={{ color: "var(--ink-2)" }}

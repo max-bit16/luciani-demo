@@ -1,5 +1,6 @@
 import { CheckCircle, Globe, MapPin, type LucideIcon } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { H2Reveal } from "@/components/anim/H2Reveal";
 
 const blocs: { Icon: LucideIcon; title: string; body: string }[] = [
   {
@@ -34,11 +35,9 @@ export function Approche() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div ref={txt} className="reveal flex flex-col gap-6">
             <span className="label-pill self-start">Notre approche</span>
-            <h2 className="t-h2">
-              Rigueur et humanité,
-              <br />
-              à chaque étape
-            </h2>
+            <H2Reveal className="t-h2">
+              {["Rigueur et humanité,", <br key="br" />, "à chaque étape"]}
+            </H2Reveal>
 
             <div className="flex flex-col gap-10 mt-4">
               {blocs.map(({ Icon, title, body }) => (
