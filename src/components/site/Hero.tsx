@@ -36,7 +36,7 @@ export function Hero() {
         <span
           key={`${idx}-${word}`}
           className="word-reveal"
-          style={{ ["--delay" as string]: `${idx * 60}ms` }}
+          style={{ ["--word-delay" as string]: `${idx * 60}ms` }}
         >
           <span>{word}</span>
         </span>
