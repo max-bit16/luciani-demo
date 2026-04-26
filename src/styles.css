@@ -881,3 +881,37 @@
 @media (max-width: 767px) {
   .section-py-mobile { padding-top: 4rem; padding-bottom: 4rem; }
 }
+
+/* ============== MOBILE ADAPTATIONS ============== */
+@media (max-width: 767px) {
+  /* Reveal animations: softer + faster */
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(18px);
+    transition-duration: 600ms;
+  }
+  /* Horizontal slides become vertical on mobile to avoid overflow-x */
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(18px);
+  }
+
+  /* H3 mobile size */
+  .t-h3 { font-size: 24px; }
+
+  /* Body sizes mobile */
+  .t-body { font-size: 16px; }
+  .t-body-lg { font-size: 17px; }
+  .t-caption { font-size: 13px; }
+
+  /* Section py-16 on mobile (override py-28 / py-36 from utilities is heavy;
+     instead apply per-section through the .mobile-section-py helper) */
+  .mobile-section-py { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+}
+
+/* Disable hover-driven transforms on touch */
+@media (hover: none), (pointer: coarse) {
+  .service-card { transform: none !important; }
+  .service-card.tilt-reset { transition: none; }
+}
