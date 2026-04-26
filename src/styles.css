@@ -456,6 +456,7 @@
 .service-card {
   background: #ffffff;
   border: 1px solid var(--line);
+  border-left: 3px solid var(--color-gold);
   box-shadow: var(--shadow-outline-ring);
   border-radius: 20px;
   padding: 32px;
