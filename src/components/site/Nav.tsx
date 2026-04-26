@@ -103,7 +103,7 @@ export function Nav() {
             onClick={() => setOpen(true)}
             style={{ color: "#000" }}
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-6 h-6" />
           </button>
         </div>
       </div>
@@ -147,7 +147,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
       onClick={onClose}
     >
       <aside
-        className={`absolute top-0 right-0 h-full w-[80%] max-w-[360px] bg-white p-6 flex flex-col drawer-panel ${animOpen ? "open" : ""}`}
+        className={`absolute top-0 right-0 h-full w-[85vw] max-w-[320px] bg-white p-6 flex flex-col drawer-panel ${animOpen ? "open" : ""}`}
         onClick={(e) => e.stopPropagation()}
         style={{ boxShadow: "var(--shadow-card-hover)" }}
       >
@@ -162,10 +162,10 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
             className="w-10 h-10 inline-flex items-center justify-center rounded-full"
             style={{ color: "#000" }}
           >
-            <X className="w-5 h-5" />
+            <X className="w-6 h-6" />
           </button>
         </div>
-        <nav className="flex flex-col">
+        <nav className="flex flex-col flex-1">
           {links.map((l) => (
             <a
               key={l.href}
@@ -178,7 +178,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
           ))}
           <a
             href="tel:+35220331456"
-            className="pill-black mt-6 self-start"
+            className="pill-black mt-6 w-full justify-center"
             onClick={onClose}
           >
             Prendre rendez-vous

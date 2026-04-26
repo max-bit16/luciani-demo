@@ -100,7 +100,7 @@ export function Domaines() {
   return (
     <section
       id="domaines"
-      className="relative overflow-hidden py-28 md:py-36"
+      className="relative overflow-hidden py-16 md:py-36"
       style={{ backgroundColor: "#ffffff" }}
     >
       <span className="deco-number" aria-hidden="true">01</span>

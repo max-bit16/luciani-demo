@@ -36,7 +36,7 @@ export function Hero() {
         <span
           key={`${idx}-${word}`}
           className="word-reveal"
-          style={{ ["--delay" as string]: `${idx * 60}ms` }}
+          style={{ ["--word-delay" as string]: `${idx * 60}ms` }}
         >
           <span>{word}</span>
         </span>
@@ -114,7 +114,7 @@ export function Hero() {
           </div>
 
           <div
-            className={`hero-enter ${entered ? "entered" : ""} flex gap-3 flex-wrap`}
+            className={`hero-enter hero-cta-block ${entered ? "entered" : ""} flex gap-3 flex-col sm:flex-row sm:flex-wrap`}
             style={{ ["--enter-delay" as string]: "610ms" } as React.CSSProperties}
           >
             <Magnetic>
