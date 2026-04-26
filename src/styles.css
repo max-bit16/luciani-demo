@@ -444,12 +444,18 @@
   background: #000;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 200ms ease;
+  transition: transform 220ms ease;
 }
 .nav-link:hover {
   color: #000;
 }
 .nav-link:hover::after {
+  transform: scaleX(1);
+}
+.nav-link.active {
+  color: #000;
+}
+.nav-link.active::after {
   transform: scaleX(1);
 }
 
