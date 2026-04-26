@@ -31,7 +31,7 @@ const reviews: Review[] = [
 ];
 
 const SHADOW =
-  "rgba(0,0,0,0.075) 0px 0px 0px 0.5px inset, rgba(0,0,0,0.06) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 4px";
+  "rgba(0,0,0,0.075) 0px 0px 0px 0.5px inset, rgba(0,0,0,0.06) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 1px 2px, rgba(0,0,0,0.04) 0px 2px 4px";
 
 function initial(name: string) {
   return name.trim().charAt(0).toUpperCase();
@@ -39,7 +39,8 @@ function initial(name: string) {
 
 export function Testimonials() {
   const [index, setIndex] = useState(0);
-  const [enterKey, setEnterKey] = useState(0);
+  const [displayIndex, setDisplayIndex] = useState(0);
+  const [phase, setPhase] = useState<"in" | "out">("in");
   const pausedRef = useRef(false);
   const head = useReveal<HTMLDivElement>();
   const wrap = useReveal<HTMLDivElement>();
@@ -53,10 +54,19 @@ export function Testimonials() {
   }, []);
 
   useEffect(() => {
-    setEnterKey((k) => k + 1);
-  }, [index]);
+    if (index === displayIndex) return;
+    // Start exit animation on the currently displayed card
+    setPhase("out");
+    const outDuration = 400;
+    const gap = 50;
+    const t = window.setTimeout(() => {
+      setDisplayIndex(index);
+      setPhase("in");
+    }, outDuration - gap); // next enters as current finishes (gap between out & in)
+    return () => window.clearTimeout(t);
+  }, [index, displayIndex]);
 
-  const r = reviews[index];
+  const r = reviews[displayIndex];
 
   return (
     <section
@@ -94,8 +104,8 @@ export function Testimonials() {
           }}
         >
           <div
-            key={enterKey}
-            className="testimonial-card relative"
+            key={`${displayIndex}-${phase}`}
+            className={`testimonial-card relative ${phase === "in" ? "is-in" : "is-out"}`}
             style={{
               background: "#ffffff",
               borderRadius: "20px",
@@ -110,9 +120,10 @@ export function Testimonials() {
                 top: "24px",
                 left: "28px",
                 fontSize: "96px",
-                lineHeight: 1,
+                lineHeight: 0.8,
                 fontWeight: 300,
-                color: "rgba(245,242,239,0.9)",
+                color: "rgba(245,242,239,1)",
+                zIndex: 0,
               }}
             >
               "
@@ -125,10 +136,19 @@ export function Testimonials() {
             >
               <div
                 className="mb-6"
-                style={{ color: "#c9a84c", fontSize: "16px", letterSpacing: "2px" }}
+                style={{
+                  color: "#c9a84c",
+                  fontSize: "16px",
+                  display: "flex",
+                  gap: "2px",
+                }}
                 aria-label="5 étoiles sur 5"
               >
-                ★★★★★
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
               </div>
 
               <p
@@ -139,6 +159,7 @@ export function Testimonials() {
                   fontStyle: "italic",
                   color: "#4e4e4e",
                   lineHeight: 1.65,
+                  letterSpacing: "0.18px",
                 }}
               >
                 {r.quote}
@@ -214,10 +235,18 @@ export function Testimonials() {
           </div>
 
           <p
-            className="t-caption text-center mt-4"
+            className="text-center mt-6"
             style={{ color: "#777169" }}
           >
-            Avis vérifiés sur Google Maps
+            <span
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontWeight: 400,
+                fontSize: "14px",
+              }}
+            >
+              Avis vérifiés sur Google Maps
+            </span>
           </p>
         </div>
       </div>
