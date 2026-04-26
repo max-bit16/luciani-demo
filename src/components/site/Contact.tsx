@@ -46,6 +46,7 @@ function InfoCard({
       <div
         ref={glowRef}
         aria-hidden="true"
+        className="info-glow"
         style={{
           position: "absolute",
           inset: 0,
