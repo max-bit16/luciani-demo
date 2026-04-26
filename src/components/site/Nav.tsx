@@ -10,6 +10,7 @@ const links = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
     if (open) {
@@ -27,6 +28,31 @@ export function Nav() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ["domaines", "profil", "contact"];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const visible = new Set<string>();
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (entry.isIntersecting) visible.add(id);
+          else visible.delete(id);
+        });
+        // Pick the first id (in document order) that is currently visible
+        const next = ids.find((id) => visible.has(id)) ?? null;
+        setActiveId(next);
+      },
+      { threshold: 0.3 }
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
   }, []);
 
   return (
@@ -50,11 +76,19 @@ export function Nav() {
         </a>
 
         <nav className="hidden lg:flex items-center gap-10">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link t-nav">
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const id = l.href.replace("#", "");
+            const isActive = activeId === id;
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                className={`nav-link t-nav ${isActive ? "active" : ""}`}
+              >
+                {l.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
