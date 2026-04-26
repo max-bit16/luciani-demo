@@ -70,6 +70,7 @@ export function Testimonials() {
 
   return (
     <section
+      id="avis"
       className="py-28 md:py-36"
       style={{ backgroundColor: "#f5f5f5" }}
       aria-label="Avis clients"

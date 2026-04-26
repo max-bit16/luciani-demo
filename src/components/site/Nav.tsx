@@ -4,6 +4,8 @@ import { Menu, X } from "lucide-react";
 const links = [
   { href: "#domaines", label: "Domaines" },
   { href: "#profil", label: "Tom Luciani" },
+  { href: "#approche", label: "Approche" },
+  { href: "#avis", label: "Avis" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -31,7 +33,7 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
-    const ids = ["domaines", "profil", "contact"];
+    const ids = ["domaines", "profil", "approche", "avis", "contact"];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
