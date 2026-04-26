@@ -167,3 +167,14 @@
     font-size: 48px;
   }
 }
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 1.17;
+  color: var(--ink);
+}
+@media (min-width: 768px) {
+  .t-h2 {
+    font-size: 36px;
