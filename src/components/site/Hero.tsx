@@ -55,16 +55,26 @@ export function Hero() {
     >
       <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
         <img
-          src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&q=80&auto=format&fit=crop"
+          src="https://source.unsplash.com/DqHa4YO9mjc/800x1200"
+          alt="Vue de Luxembourg avec le signe Luxembourg au coucher du soleil"
+          className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
+          style={{ objectPosition: "center center" }}
+          loading="eager"
+        />
+        <img
+          src="https://source.unsplash.com/vBKCJbjH8cs/1920x1080"
           alt="Architecture contemporaine de la Philharmonie de Luxembourg"
-          className="w-full h-full object-cover object-right kenburns"
+          className="hidden md:block absolute inset-0 w-full h-full object-cover object-right kenburns"
           loading="eager"
         />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 md:hidden bg-gradient-to-b from-white/95 via-white/85 to-white/40"
+        />
+        <div
+          className="absolute inset-0 hidden md:block"
           style={{
             background:
-              "linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.90) 45%, rgba(255,255,255,0.10) 100%)",
+              "linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.80) 45%, rgba(255,255,255,0.08) 100%)",
           }}
         />
       </div>
