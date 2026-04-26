@@ -58,6 +58,7 @@ export function Marquee() {
         borderTop: "1px solid rgba(0,0,0,0.06)",
         borderBottom: "1px solid rgba(0,0,0,0.06)",
         overflow: "hidden",
+        position: "relative",
       }}
     >
       <div
@@ -72,6 +73,16 @@ export function Marquee() {
         <MarqueeContent />
         <MarqueeContent />
       </div>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          background:
+            "linear-gradient(to right, #f5f2ef 0%, rgba(245,242,239,0) 8%, rgba(245,242,239,0) 92%, #f5f2ef 100%)",
+        }}
+      />
     </div>
   );
 }
