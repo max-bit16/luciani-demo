@@ -138,6 +138,12 @@
   --line: #e5e5e5;
   --line-soft: rgba(0, 0, 0, 0.05);
 
+  /* Accent palette — gold & navy */
+  --color-gold: #B8924A;
+  --color-gold-dim: rgba(184, 146, 74, 0.12);
+  --color-gold-ink: #8a6a2e;
+  --color-navy: #0B1829;
+
   /* Shadow system — inset 0.5px obligatoire */
   --shadow-inset-edge: rgba(0, 0, 0, 0.075) 0 0 0 0.5px inset;
   --shadow-outline-ring:
