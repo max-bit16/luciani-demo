@@ -27,13 +27,13 @@ function Stat({
         ref={numberRef}
         className="font-display"
         style={{
-          fontSize: "56px",
           lineHeight: 1,
           color: "#ffffff",
           fontWeight: 300,
           display: "inline-block",
           willChange: "transform",
         }}
+        data-stat-number
       >
         {value}
         {suffix}
@@ -49,11 +49,11 @@ export function Stats() {
   return (
     <section
       style={{ backgroundColor: "#0a0a0a" }}
-      className="relative overflow-hidden py-20 md:py-24"
+      className="relative overflow-hidden py-16 md:py-24"
     >
       <span
         aria-hidden="true"
-        className="font-display absolute pointer-events-none select-none"
+        className="font-display absolute pointer-events-none select-none hidden md:block"
         style={{
           top: "50%",
           left: "50%",
@@ -70,17 +70,17 @@ export function Stats() {
         LUCIANI
       </span>
       <div className="container-x relative" style={{ zIndex: 1 }}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(255,255,255,0.06)]">
-          <div className="md:px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(255,255,255,0.06)] stats-grid">
+          <div className="md:px-4 stat-cell">
             <Stat target={17} suffix="+" label="Années au barreau" delay={0} />
           </div>
-          <div className="md:px-4">
+          <div className="md:px-4 stat-cell">
             <Stat target={2007} label="Inscription au barreau" delay={100} />
           </div>
-          <div className="md:px-4">
+          <div className="md:px-4 stat-cell">
             <Stat target={4} label="Domaines d'expertise" delay={200} />
           </div>
-          <div className="md:px-4">
+          <div className="md:px-4 stat-cell">
             <Stat target={4} label="Langues de consultation" delay={300} />
           </div>
         </div>
