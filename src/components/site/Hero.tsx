@@ -42,11 +42,6 @@ export function Hero() {
   const renderWordsWithSpaces = (words: React.ReactNode[]) =>
     words.flatMap((node, i) => (i === 0 ? [node] : [" ", node]));
 
-  const e = (delay: number, cls = ""): React.HTMLAttributes<HTMLElement> => ({
-    className: `hero-enter ${entered ? "entered" : ""} ${cls}`.trim(),
-    style: { ["--enter-delay" as string]: `${delay}ms` } as React.CSSProperties,
-  });
-
   return (
     <section
       id="hero"
@@ -74,7 +69,10 @@ export function Hero() {
         style={{ minHeight: "100vh", paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "96px", paddingBottom: "64px" }}
       >
         <div className="md:pl-10 flex flex-col gap-8">
-          <div {...e(80)}>
+          <div
+            className={`hero-enter ${entered ? "entered" : ""}`}
+            style={{ ["--enter-delay" as string]: "80ms" } as React.CSSProperties}
+          >
             <span className="label-pill">Barreau de Luxembourg · Depuis 2007</span>
           </div>
 
@@ -89,7 +87,6 @@ export function Hero() {
           </h1>
 
           <p
-            {...e(380)}
             className={`hero-enter ${entered ? "entered" : ""} t-body-lg`}
             style={{
               color: "var(--ink-2)",
