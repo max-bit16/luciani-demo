@@ -102,7 +102,21 @@ export function Hero() {
             className={`hero-enter ${entered ? "entered" : ""}`}
             style={{ ["--enter-delay" as string]: "80ms" } as React.CSSProperties}
           >
-            <span className="label-pill">Barreau de Luxembourg · Depuis 2007</span>
+            <span className="label-pill">
+              <span
+                aria-hidden="true"
+                style={{
+                  color: "#B8924A",
+                  fontSize: "8px",
+                  marginRight: "4px",
+                  verticalAlign: "middle",
+                  lineHeight: 1,
+                }}
+              >
+                ●
+              </span>
+              Barreau de Luxembourg · Depuis 2007
+            </span>
           </div>
 
           <h1
