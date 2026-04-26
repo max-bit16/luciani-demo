@@ -154,3 +154,11 @@
   font-weight: 300;
 }
 
+.t-h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.08;
+  letter-spacing: -0.96px;
+  color: var(--ink);
+}
