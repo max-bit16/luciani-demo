@@ -852,7 +852,7 @@
   position: relative;
   overflow: hidden;
 }
-.info-card > *:not([aria-hidden="true"]) {
+.info-card > *:not(.info-glow) {
   position: relative;
   z-index: 1;
 }
