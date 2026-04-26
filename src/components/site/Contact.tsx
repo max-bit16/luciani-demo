@@ -148,11 +148,13 @@ export function Contact() {
               <p className="t-caption mt-1" style={{ color: "var(--ink-3)" }}>
                 Permanence : 14h00 – 18h00
               </p>
-              <Magnetic className="mt-6 self-start contact-cta-block">
-                <a href="tel:+35220331456" className="pill-warm">
-                  Appeler maintenant
-                </a>
-              </Magnetic>
+              <div className="contact-cta-block mt-6 self-start w-full sm:w-auto">
+                <Magnetic>
+                  <a href="tel:+35220331456" className="pill-warm">
+                    Appeler maintenant
+                  </a>
+                </Magnetic>
+              </div>
             </InfoCard>
 
             <InfoCard delay={240}>
