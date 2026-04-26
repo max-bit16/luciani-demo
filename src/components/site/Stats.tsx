@@ -28,7 +28,7 @@ function Stat({
         className="font-display"
         style={{
           lineHeight: 1,
-          color: "#ffffff",
+          color: "#B8924A",
           fontWeight: 300,
           display: "inline-block",
           willChange: "transform",
@@ -48,7 +48,7 @@ function Stat({
 export function Stats() {
   return (
     <section
-      style={{ backgroundColor: "#0a0a0a" }}
+      style={{ backgroundColor: "#0B1829" }}
       className="relative overflow-hidden py-16 md:py-24"
     >
       <span
@@ -60,7 +60,7 @@ export function Stats() {
           transform: "translate(-50%, -50%)",
           fontSize: "200px",
           fontWeight: 300,
-          color: "rgba(255,255,255,0.02)",
+          color: "rgba(255,255,255,0.03)",
           letterSpacing: "-4px",
           whiteSpace: "nowrap",
           zIndex: 0,
