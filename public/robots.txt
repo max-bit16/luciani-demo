@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+Sitemap: https://www.etude-luciani.com/sitemap.xml
+
+Host: https://www.etude-luciani.com
