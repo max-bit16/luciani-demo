@@ -993,6 +993,17 @@
     padding-bottom: 1.5rem;
     border-bottom: 1px solid rgba(11, 24, 41, 0.10);
   }
+  .stats-grid .stat-cell:nth-child(3),
+  .stats-grid .stat-cell:nth-child(4) {
+    padding-top: 0.5rem;
+  }
+  .stats-grid .stat-cell:nth-child(odd) {
+    padding-right: 0.75rem;
+    border-right: 1px solid rgba(11, 24, 41, 0.10);
+  }
+  .stats-grid .stat-cell:nth-child(even) {
+    padding-left: 0.75rem;
+  }
 }
 
 /* Domaines: service card padding on mobile */

@@ -49,7 +49,7 @@ export function Stats() {
   return (
     <section
       style={{ backgroundColor: "#F4ECDD" }}
-      className="relative overflow-hidden py-16 md:py-24"
+      className="relative overflow-hidden py-20 md:py-28 lg:py-32"
     >
       <span
         aria-hidden="true"
@@ -70,17 +70,17 @@ export function Stats() {
         LUCIANI
       </span>
       <div className="container-x relative" style={{ zIndex: 1 }}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(11,24,41,0.10)] stats-grid">
-          <div className="md:px-4 stat-cell">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 md:gap-0 md:divide-x md:divide-[rgba(11,24,41,0.10)] stats-grid">
+          <div className="md:px-6 lg:px-8 stat-cell">
             <Stat target={17} suffix="+" label="Années au barreau" delay={0} />
           </div>
-          <div className="md:px-4 stat-cell">
+          <div className="md:px-6 lg:px-8 stat-cell">
             <Stat target={2007} label="Inscription au barreau" delay={100} />
           </div>
-          <div className="md:px-4 stat-cell">
+          <div className="md:px-6 lg:px-8 stat-cell">
             <Stat target={4} label="Domaines d'expertise" delay={200} />
           </div>
-          <div className="md:px-4 stat-cell">
+          <div className="md:px-6 lg:px-8 stat-cell">
             <Stat target={4} label="Langues de consultation" delay={300} />
           </div>
         </div>
