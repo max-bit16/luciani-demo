@@ -135,10 +135,20 @@
     letter-spacing: 0.18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  /* Anchor sections — offset for fixed nav */
+  #hero,
+  #domaines,
+  #profil,
+  #contact {
+    scroll-margin-top: 64px;
   }
 
   ::selection {
