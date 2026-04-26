@@ -55,7 +55,7 @@ export function Contact() {
     <section
       id="contact"
       className="relative overflow-hidden py-28 md:py-36"
-      style={{ backgroundColor: "#f5f5f5" }}
+      style={{ backgroundColor: "#ffffff" }}
     >
       <span className="deco-number" aria-hidden="true">04</span>
       <img
