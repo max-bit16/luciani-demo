@@ -61,6 +61,7 @@ export function Approche() {
   const img = useReveal<HTMLDivElement>();
   return (
     <section
+      id="approche"
       className="relative overflow-hidden py-28 md:py-36"
       style={{ backgroundColor: "#ffffff" }}
     >
