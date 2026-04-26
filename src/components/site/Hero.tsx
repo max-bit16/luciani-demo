@@ -55,8 +55,8 @@ export function Hero() {
     >
       <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
         <img
-          src="https://source.unsplash.com/DqHa4YO9mjc/800x1200"
-          alt="Vue de Luxembourg avec le signe Luxembourg au coucher du soleil"
+          src="/images/luxembourg-hero-mobile.jpg"
+          alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
           className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
           style={{ objectPosition: "center center" }}
           loading="eager"
@@ -68,7 +68,11 @@ export function Hero() {
           loading="eager"
         />
         <div
-          className="absolute inset-0 md:hidden bg-gradient-to-b from-white/95 via-white/85 to-white/40"
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.50) 70%, rgba(255,255,255,0.20) 100%)",
+          }}
         />
         <div
           className="absolute inset-0 hidden md:block"
