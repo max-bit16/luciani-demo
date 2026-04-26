@@ -90,7 +90,7 @@ export function Approche() {
           >
             <img
               src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800&q=80&auto=format&fit=crop"
-              alt="Salle d'audience et balance de la justice"
+              alt="Statue de la Justice, symbole du droit"
               className="w-full h-full object-cover"
               loading="lazy"
             />
