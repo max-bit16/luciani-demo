@@ -881,6 +881,9 @@
   /* H3 mobile size */
   .t-h3 { font-size: 24px; }
 
+  /* H2 line-height a touch looser on mobile to avoid cramped 2-line headings */
+  .t-h2 { line-height: 1.25; }
+
   /* Body sizes mobile */
   .t-body { font-size: 16px; }
   .t-body-lg { font-size: 17px; }
