@@ -31,7 +31,7 @@ export function Hero() {
     return () => window.clearTimeout(t);
   }, [entered]);
 
-  const renderLine = (line: string, startIndex: number) =>
+  const renderLine = (line: string, startIndex: number, color?: string) =>
     line.split(" ").map((word, i) => {
       const idx = startIndex + i;
       return (
@@ -40,7 +40,7 @@ export function Hero() {
           className="word-reveal"
           style={{ ["--word-delay" as string]: `${idx * 60}ms` }}
         >
-          <span>{word}</span>
+          <span style={color ? { color } : undefined}>{word}</span>
         </span>
       );
     });
@@ -110,9 +110,9 @@ export function Hero() {
             className={`hero-enter ${entered ? "entered" : ""} t-h1`}
             style={{ ["--enter-delay" as string]: "200ms" } as React.CSSProperties}
           >
-            {renderWordsWithSpaces(renderLine(H1_LINE_1, 0))}
+            {renderWordsWithSpaces(renderLine(H1_LINE_1, 0, "#000000"))}
             <br />
-            {renderWordsWithSpaces(renderLine(H1_LINE_2, line1Words.length))}
+            {renderWordsWithSpaces(renderLine(H1_LINE_2, line1Words.length, "#B8924A"))}
           </h1>
 
           <p
