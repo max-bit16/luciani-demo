@@ -24,7 +24,7 @@ export function Profil() {
           >
             <img
               src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=900&q=80&auto=format&fit=crop"
-              alt="Bibliothèque juridique du cabinet, ouvrages de droit"
+              alt="Consultation juridique au cabinet Luciani"
               className="w-full h-full object-cover"
               loading="lazy"
             />
