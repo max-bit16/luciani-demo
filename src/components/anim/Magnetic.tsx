@@ -36,6 +36,7 @@ export function Magnetic({
       className={`magnetic ${className ?? ""}`}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      style={{ display: "inline-block" }}
     >
       {children}
     </span>
