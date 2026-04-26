@@ -1,6 +1,8 @@
 import { MapPin, Phone, Clock } from "lucide-react";
+import { useRef } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { H2Reveal } from "@/components/anim/H2Reveal";
+import { Magnetic } from "@/components/anim/Magnetic";
 
 function InfoCard({
   delay,
@@ -10,12 +12,37 @@ function InfoCard({
   children: React.ReactNode;
 }) {
   const ref = useReveal<HTMLDivElement>();
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
+  const onEnter = () => {
+    const el = cardRef.current;
+    if (el) el.classList.add("glow-on");
+  };
+  const onLeave = () => {
+    const el = cardRef.current;
+    if (el) el.classList.remove("glow-on");
+  };
+
   return (
     <div
-      ref={ref}
+      ref={(el) => {
+        ref.current = el;
+        cardRef.current = el;
+      }}
+      onMouseMove={onMove}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
       className="reveal info-card flex flex-col"
       style={{ ["--delay" as string]: `${delay}ms` }}
     >
+      <span className="glow" aria-hidden="true" />
       {children}
     </div>
   );
@@ -28,8 +55,9 @@ export function Contact() {
     <section
       id="contact"
       className="relative overflow-hidden py-28 md:py-36"
-      style={{ backgroundColor: "#f5f5f5" }}
+      style={{ backgroundColor: "#ffffff" }}
     >
+      <span className="deco-number" aria-hidden="true">04</span>
       <img
         src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=1200&q=80&auto=format&fit=crop"
         alt=""
@@ -107,9 +135,11 @@ export function Contact() {
               <p className="t-caption mt-1" style={{ color: "var(--ink-3)" }}>
                 Permanence : 14h00 – 18h00
               </p>
-              <a href="tel:+35220331456" className="pill-warm mt-6 self-start">
-                Appeler maintenant
-              </a>
+              <Magnetic className="mt-6 self-start">
+                <a href="tel:+35220331456" className="pill-warm">
+                  Appeler maintenant
+                </a>
+              </Magnetic>
             </InfoCard>
 
             <InfoCard delay={240}>

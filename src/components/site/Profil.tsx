@@ -7,14 +7,15 @@ export function Profil() {
   return (
     <section
       id="profil"
-      className="py-28 md:py-36"
+      className="relative overflow-hidden py-28 md:py-36"
       style={{ backgroundColor: "#f5f5f5" }}
     >
-      <div className="container-x">
+      <span className="deco-number" aria-hidden="true">02</span>
+      <div className="container-x relative" style={{ zIndex: 1 }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div
             ref={img}
-            className="reveal-left overflow-hidden"
+            className="reveal-left zoom-wrap"
             style={{
               borderRadius: "20px",
               aspectRatio: "4 / 3",

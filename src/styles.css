@@ -518,11 +518,12 @@
   top: 0;
   left: 0;
   height: 2px;
-  width: 0;
+  width: 100%;
   background: #000000;
-  z-index: 100;
+  z-index: 101;
   pointer-events: none;
   transform-origin: left center;
+  transform: scaleX(0);
   will-change: width;
 }
 
@@ -690,4 +691,183 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .testimonial-card { animation: none !important; }
+}
+
+/* ============== AUDIT FIXES ============== */
+
+/* Scroll progress above nav */
+.scroll-progress { z-index: 101; }
+
+/* Nav scroll-aware shadow */
+.nav-shell {
+  transition:
+    background-color 300ms ease,
+    backdrop-filter 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+/* Mobile drawer transitions */
+.drawer-backdrop {
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.drawer-backdrop.open { opacity: 1; }
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.drawer-panel.open { transform: translateX(0); }
+
+.drawer-link {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 18px;
+  color: #000;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+  will-change: transform;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Section decorative number */
+.deco-number {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 180px;
+  line-height: 1;
+  letter-spacing: -4px;
+  color: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+@media (max-width: 767px) {
+  .deco-number { display: none; }
+}
+
+/* Reveal-scale */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0ms);
+  will-change: transform, opacity;
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-scale { opacity: 1; transform: none; transition: none; }
+}
+
+/* Counter pulse */
+@keyframes counter-pulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.counter-pulse { animation: counter-pulse 350ms ease-in-out; }
+
+/* Domaines tilt softer + hover shadow */
+.service-card:hover {
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 0px 1px,
+    rgba(0, 0, 0, 0.06) 0px 4px 16px,
+    rgba(78, 50, 23, 0.05) 0px 8px 24px;
+}
+.service-card svg {
+  position: relative;
+  z-index: 1;
+  transition: color 250ms ease, transform 200ms ease;
+}
+
+/* Image hover zoom wrapper */
+.zoom-wrap { overflow: hidden; }
+.zoom-wrap img {
+  transition: transform 600ms ease;
+  will-change: transform;
+}
+.zoom-wrap:hover img { transform: scale(1.04); }
+
+/* Testimonial card hover lift */
+.testimonial-card {
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  will-change: transform;
+}
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 0px 1px,
+    rgba(0, 0, 0, 0.06) 0px 4px 16px,
+    rgba(78, 50, 23, 0.05) 0px 8px 24px;
+}
+
+/* Testimonial crossfade — overrides earlier definition */
+@keyframes testimonial-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes testimonial-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-12px); }
+}
+.testimonial-card.is-in  { animation: testimonial-in 400ms ease both; }
+.testimonial-card.is-out { animation: testimonial-out 400ms ease both; }
+
+/* Contact info-card warm glow */
+.info-card {
+  position: relative;
+  overflow: hidden;
+}
+.info-card .glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(245, 242, 239, 0.7) 0%,
+    transparent 65%
+  );
+}
+.info-card.glow-on .glow { opacity: 1; }
+.info-card > *:not(.glow) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Disable tilt + magnetic on touch / coarse pointers */
+@media (hover: none), (pointer: coarse) {
+  .magnetic { transform: none !important; }
+}
+
+/* Mobile spacing tweaks */
+@media (max-width: 767px) {
+  .section-py-mobile { padding-top: 4rem; padding-bottom: 4rem; }
 }

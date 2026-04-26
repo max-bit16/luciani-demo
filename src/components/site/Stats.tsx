@@ -1,12 +1,39 @@
 import { useCounter } from "@/hooks/useCounter";
+import { useReveal } from "@/hooks/useReveal";
 
-function Stat({ target, suffix = "", label }: { target: number; suffix?: string; label: string }) {
-  const { ref, value } = useCounter(target);
+function Stat({
+  target,
+  suffix = "",
+  label,
+  delay,
+}: {
+  target: number;
+  suffix?: string;
+  label: string;
+  delay: number;
+}) {
+  const { ref, numberRef, value } = useCounter(target);
+  const reveal = useReveal<HTMLDivElement>();
   return (
-    <div ref={ref} className="text-center">
+    <div
+      ref={(el) => {
+        ref.current = el;
+        reveal.current = el;
+      }}
+      className="reveal-scale text-center"
+      style={{ ["--delay" as string]: `${delay}ms` }}
+    >
       <div
+        ref={numberRef}
         className="font-display"
-        style={{ fontSize: "56px", lineHeight: 1, color: "#ffffff", fontWeight: 300 }}
+        style={{
+          fontSize: "56px",
+          lineHeight: 1,
+          color: "#ffffff",
+          fontWeight: 300,
+          display: "inline-block",
+          willChange: "transform",
+        }}
       >
         {value}
         {suffix}
@@ -45,16 +72,16 @@ export function Stats() {
       <div className="container-x relative" style={{ zIndex: 1 }}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(255,255,255,0.06)]">
           <div className="md:px-4">
-            <Stat target={17} suffix="+" label="Années au barreau" />
+            <Stat target={17} suffix="+" label="Années au barreau" delay={0} />
           </div>
           <div className="md:px-4">
-            <Stat target={2007} label="Inscription au barreau" />
+            <Stat target={2007} label="Inscription au barreau" delay={100} />
           </div>
           <div className="md:px-4">
-            <Stat target={4} label="Domaines d'expertise" />
+            <Stat target={4} label="Domaines d'expertise" delay={200} />
           </div>
           <div className="md:px-4">
-            <Stat target={4} label="Langues de consultation" />
+            <Stat target={4} label="Langues de consultation" delay={300} />
           </div>
         </div>
       </div>
