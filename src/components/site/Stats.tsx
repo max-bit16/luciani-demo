@@ -38,7 +38,7 @@ function Stat({
         {value}
         {suffix}
       </div>
-      <div className="t-label mt-3" style={{ color: "rgba(255,255,255,0.4)" }}>
+      <div className="t-label mt-3" style={{ color: "rgba(11,24,41,0.55)" }}>
         {label}
       </div>
     </div>
@@ -48,7 +48,7 @@ function Stat({
 export function Stats() {
   return (
     <section
-      style={{ backgroundColor: "#0B1829" }}
+      style={{ backgroundColor: "#F4ECDD" }}
       className="relative overflow-hidden py-16 md:py-24"
     >
       <span
@@ -60,7 +60,7 @@ export function Stats() {
           transform: "translate(-50%, -50%)",
           fontSize: "200px",
           fontWeight: 300,
-          color: "rgba(255,255,255,0.03)",
+          color: "rgba(11,24,41,0.05)",
           letterSpacing: "-4px",
           whiteSpace: "nowrap",
           zIndex: 0,
@@ -70,7 +70,7 @@ export function Stats() {
         LUCIANI
       </span>
       <div className="container-x relative" style={{ zIndex: 1 }}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(255,255,255,0.06)] stats-grid">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(11,24,41,0.10)] stats-grid">
           <div className="md:px-4 stat-cell">
             <Stat target={17} suffix="+" label="Années au barreau" delay={0} />
           </div>
