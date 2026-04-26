@@ -960,9 +960,30 @@
 }
 
 /* Stats: number sizes */
-[data-stat-number] { font-size: 48px; }
+[data-stat-number] {
+  font-size: 64px;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
 @media (min-width: 768px) {
-  [data-stat-number] { font-size: 64px; }
+  [data-stat-number] { font-size: 96px; }
+}
+@media (min-width: 1024px) {
+  [data-stat-number] { font-size: 112px; }
+}
+
+/* Stats: label sizing tuned for editorial scale */
+.stats-grid .t-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  .stats-grid .t-label {
+    font-size: 12px;
+    margin-top: 1.25rem;
+  }
 }
 
 /* Stats: bottom border between mobile rows (first 2 cells) */
@@ -970,7 +991,7 @@
   .stats-grid .stat-cell:nth-child(1),
   .stats-grid .stat-cell:nth-child(2) {
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(11, 24, 41, 0.10);
   }
 }
 

@@ -38,7 +38,7 @@ function Stat({
         {value}
         {suffix}
       </div>
-      <div className="t-label mt-3" style={{ color: "rgba(11,24,41,0.55)" }}>
+      <div className="t-label" style={{ color: "rgba(11,24,41,0.55)" }}>
         {label}
       </div>
     </div>
