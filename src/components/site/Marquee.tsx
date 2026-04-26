@@ -80,7 +80,7 @@ export function Marquee() {
           inset: 0,
           pointerEvents: "none",
           background:
-            "linear-gradient(to right, #f5f2ef 0%, rgba(245,242,239,0) 8%, rgba(245,242,239,0) 92%, #f5f2ef 100%)",
+            "linear-gradient(to right, rgba(232,226,218,0.95) 0%, rgba(245,242,239,0.85) 4%, rgba(245,242,239,0) 12%, rgba(245,242,239,0) 88%, rgba(245,242,239,0.85) 96%, rgba(232,226,218,0.95) 100%)",
         }}
       />
     </div>
