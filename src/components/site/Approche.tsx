@@ -1,6 +1,7 @@
 import { CheckCircle, Globe, MapPin, type LucideIcon } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { H2Reveal } from "@/components/anim/H2Reveal";
+import approcheImage from "@/assets/approche-consultation.jpg";
 
 const blocs: { Icon: LucideIcon; title: string; body: string }[] = [
   {
@@ -89,8 +90,8 @@ export function Approche() {
             }}
           >
             <img
-              src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800&q=80&auto=format&fit=crop"
-              alt="Statue de la Justice, symbole du droit"
+              src={approcheImage}
+              alt="Consultation et rédaction de documents juridiques au cabinet"
               className="w-full h-full object-cover"
               loading="lazy"
             />
