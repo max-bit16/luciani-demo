@@ -191,19 +191,31 @@ export function Hero() {
             {renderWordsWithSpaces(renderLine(H1_LINE_2, line1Words.length, "#B8924A"))}
           </h1>
 
-          <p
-            className={`hero-enter ${entered ? "entered" : ""} t-body-lg`}
-            style={{
-              color: "var(--ink-2)",
-              ["--enter-delay" as string]: "380ms",
-              textShadow:
-                "0 1px 2px rgba(255,255,255,0.95), 0 0 12px rgba(255,255,255,0.85), 0 0 24px rgba(255,255,255,0.7)",
-            } as React.CSSProperties}
+          <div
+            className={`hero-enter ${entered ? "entered" : ""} relative`}
+            style={{ ["--enter-delay" as string]: "380ms" } as React.CSSProperties}
           >
-            Cabinet d'avocats à Dudelange, au cœur du Grand-Duché de Luxembourg.
-            Droit civil, pénal, commercial et administratif. Consultations en
-            luxembourgeois, français, allemand ou anglais.
-          </p>
+            <span
+              aria-hidden="true"
+              className="md:hidden absolute pointer-events-none"
+              style={{
+                inset: "-10px -14px",
+                background: "rgba(255,255,255,0.55)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                borderRadius: "12px",
+                zIndex: 0,
+              }}
+            />
+            <p
+              className="t-body-lg relative"
+              style={{ color: "var(--ink-2)", zIndex: 1 }}
+            >
+              Cabinet d'avocats à Dudelange, au cœur du Grand-Duché de Luxembourg.
+              Droit civil, pénal, commercial et administratif. Consultations en
+              luxembourgeois, français, allemand ou anglais.
+            </p>
+          </div>
 
           <div
             className={`hero-enter ${entered ? "entered" : ""} flex gap-2 flex-wrap`}
