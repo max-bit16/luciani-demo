@@ -6,6 +6,7 @@ import { Domaines } from "@/components/site/Domaines";
 import { Profil } from "@/components/site/Profil";
 import { Approche } from "@/components/site/Approche";
 import { Contact } from "@/components/site/Contact";
+import { Testimonials } from "@/components/site/Testimonials";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/anim/ScrollProgress";
 import { SectionDivider } from "@/components/anim/SectionDivider";
@@ -31,6 +32,8 @@ function Index() {
         <Approche />
         <SectionDivider />
         <Contact />
+        <SectionDivider />
+        <Testimonials />
       </main>
       <Footer />
     </div>
