@@ -28,7 +28,7 @@ function Stat({
         className="font-display"
         style={{
           lineHeight: 1,
-          color: "#B8924A",
+          color: "#0B1829",
           fontWeight: 300,
           display: "inline-block",
           willChange: "transform",
