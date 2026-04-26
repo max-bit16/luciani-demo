@@ -534,7 +534,7 @@
   pointer-events: none;
   transform-origin: left center;
   transform: scaleX(0);
-  will-change: width;
+  will-change: transform;
 }
 
 /* 2. Hero entrance sequence */
@@ -545,7 +545,6 @@
     opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--enter-delay, 0ms);
-  will-change: opacity, transform;
 }
 .hero-enter.entered {
   opacity: 1;
@@ -563,7 +562,6 @@
   transform: translateY(110%);
   transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--word-delay, var(--delay, 0ms));
-  will-change: transform;
 }
 .word-reveal.entered > span {
   transform: translateY(0);
@@ -579,7 +577,6 @@
   display: inline-block;
   transform: translateY(110%);
   transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
 }
 .h2-clip.visible > span {
   transform: translateY(0);
@@ -783,7 +780,6 @@
     opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--delay, 0ms);
-  will-change: transform, opacity;
 }
 .reveal-scale.visible {
   opacity: 1;
@@ -852,22 +848,7 @@
   position: relative;
   overflow: hidden;
 }
-.info-card .glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 300ms ease;
-  background: radial-gradient(
-    circle at var(--mx, 50%) var(--my, 50%),
-    rgba(245, 242, 239, 0.7) 0%,
-    transparent 65%
-  );
-}
-.info-card.glow-on .glow { opacity: 1; }
-.info-card > *:not(.glow) {
+.info-card > *:not(.info-glow) {
   position: relative;
   z-index: 1;
 }
@@ -899,6 +880,9 @@
 
   /* H3 mobile size */
   .t-h3 { font-size: 24px; }
+
+  /* H2 line-height a touch looser on mobile to avoid cramped 2-line headings */
+  .t-h2 { line-height: 1.25; }
 
   /* Body sizes mobile */
   .t-body { font-size: 16px; }

@@ -56,7 +56,7 @@ export function Hero() {
       <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
         <img
           src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&q=80&auto=format&fit=crop"
-          alt="Vue de la Philharmonie et du quartier financier de Luxembourg"
+          alt="Architecture contemporaine de la Philharmonie de Luxembourg"
           className="w-full h-full object-cover object-right kenburns"
           loading="eager"
         />
@@ -64,7 +64,7 @@ export function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.75) 45%, rgba(255,255,255,0.05) 100%)",
+              "linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.90) 45%, rgba(255,255,255,0.10) 100%)",
           }}
         />
       </div>
@@ -136,9 +136,9 @@ export function Hero() {
               ["--enter-delay" as string]: "710ms",
             } as React.CSSProperties}
           >
-            40, rue du Commerce · L-3450 Dudelange
-            <br />
-            Tél. 20 33 14 56 · Lun–Ven 9h–19h
+            <span>40, rue du Commerce · L-3450 Dudelange</span>
+            <br className="sm:hidden" />
+            <span className="sm:before:content-['_·_']">Tél. 20 33 14 56 · Lun–Ven 9h–19h</span>
           </p>
         </div>
       </div>

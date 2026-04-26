@@ -13,21 +13,22 @@ function InfoCard({
 }) {
   const ref = useReveal<HTMLDivElement>();
   const cardRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = cardRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    const card = cardRef.current;
+    const glow = glowRef.current;
+    if (!card || !glow) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(245,242,239,0.7) 0%, transparent 65%)`;
   };
   const onEnter = () => {
-    const el = cardRef.current;
-    if (el) el.classList.add("glow-on");
+    if (glowRef.current) glowRef.current.style.opacity = "1";
   };
   const onLeave = () => {
-    const el = cardRef.current;
-    if (el) el.classList.remove("glow-on");
+    if (glowRef.current) glowRef.current.style.opacity = "0";
   };
 
   return (
@@ -42,7 +43,20 @@ function InfoCard({
       className="reveal info-card flex flex-col"
       style={{ ["--delay" as string]: `${delay}ms` }}
     >
-      <span className="glow" aria-hidden="true" />
+      <div
+        ref={glowRef}
+        aria-hidden="true"
+        className="info-glow"
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "20px",
+          pointerEvents: "none",
+          zIndex: 0,
+          opacity: 0,
+          transition: "opacity 300ms ease",
+        }}
+      />
       {children}
     </div>
   );
@@ -62,7 +76,7 @@ export function Contact() {
         src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=1200&q=80&auto=format&fit=crop"
         alt=""
         aria-hidden="true"
-        className="absolute right-0 top-0 bottom-0 h-full object-cover pointer-events-none select-none"
+        className="hidden md:block absolute right-0 top-0 bottom-0 h-full object-cover pointer-events-none select-none"
         style={{ width: "40%", opacity: 0.07 }}
       />
 
@@ -135,11 +149,13 @@ export function Contact() {
               <p className="t-caption mt-1" style={{ color: "var(--ink-3)" }}>
                 Permanence : 14h00 – 18h00
               </p>
-              <Magnetic className="mt-6 self-start">
-                <a href="tel:+35220331456" className="pill-warm">
-                  Appeler maintenant
-                </a>
-              </Magnetic>
+              <div className="contact-cta-block mt-6 self-start w-full sm:w-auto">
+                <Magnetic>
+                  <a href="tel:+35220331456" className="pill-warm">
+                    Appeler maintenant
+                  </a>
+                </Magnetic>
+              </div>
             </InfoCard>
 
             <InfoCard delay={240}>

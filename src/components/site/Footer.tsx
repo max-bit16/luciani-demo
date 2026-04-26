@@ -7,7 +7,7 @@ export function Footer() {
         borderTop: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <div className="max-w-6xl mx-auto flex justify-between items-start flex-wrap gap-8">
+      <div className="footer-grid max-w-6xl mx-auto flex justify-between items-start flex-wrap gap-8">
         <div>
           <p
             className="font-display"
@@ -31,7 +31,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="text-right">
+        <div className="footer-right text-right">
           <p
             style={{
               fontFamily: "var(--font-sans)",
