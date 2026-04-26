@@ -19,9 +19,14 @@ export function Hero() {
     if (!entered) return;
     const el = h1Ref.current;
     if (!el) return;
-    el.querySelectorAll<HTMLElement>(".word-reveal").forEach((w) =>
-      w.classList.add("entered")
-    );
+    // Words reveal after the H1 itself starts entering (200ms),
+    // then each word adds a 60ms stagger via its --delay var.
+    const t = window.setTimeout(() => {
+      el.querySelectorAll<HTMLElement>(".word-reveal").forEach((w) =>
+        w.classList.add("entered")
+      );
+    }, 200);
+    return () => window.clearTimeout(t);
   }, [entered]);
 
   const renderLine = (line: string, startIndex: number) =>
