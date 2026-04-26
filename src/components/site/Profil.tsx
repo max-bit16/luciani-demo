@@ -1,4 +1,5 @@
 import { useReveal } from "@/hooks/useReveal";
+import { H2Reveal } from "@/components/anim/H2Reveal";
 
 export function Profil() {
   const img = useReveal<HTMLDivElement>();
@@ -30,7 +31,7 @@ export function Profil() {
 
           <div ref={txt} className="reveal flex flex-col gap-6">
             <span className="label-pill self-start">Votre avocat</span>
-            <h2 className="t-h2">Maître Tom Luciani</h2>
+            <H2Reveal className="t-h2">Maître Tom Luciani</H2Reveal>
             <p className="t-editorial">
               Avocat à la Cour · Barreau de Luxembourg
             </p>
