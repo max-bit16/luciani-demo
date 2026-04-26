@@ -6,12 +6,12 @@ function Stat({ target, suffix = "", label }: { target: number; suffix?: string;
     <div ref={ref} className="text-center">
       <div
         className="font-display"
-        style={{ fontSize: "56px", lineHeight: 1, color: "#000", fontWeight: 300 }}
+        style={{ fontSize: "56px", lineHeight: 1, color: "#ffffff", fontWeight: 300 }}
       >
         {value}
         {suffix}
       </div>
-      <div className="t-label mt-3" style={{ color: "var(--ink-3)" }}>
+      <div className="t-label mt-3" style={{ color: "rgba(255,255,255,0.4)" }}>
         {label}
       </div>
     </div>
@@ -20,9 +20,30 @@ function Stat({ target, suffix = "", label }: { target: number; suffix?: string;
 
 export function Stats() {
   return (
-    <section style={{ backgroundColor: "#f5f5f5" }} className="py-20 md:py-24">
-      <div className="container-x">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(0,0,0,0.06)]">
+    <section
+      style={{ backgroundColor: "#0a0a0a" }}
+      className="relative overflow-hidden py-20 md:py-24"
+    >
+      <span
+        aria-hidden="true"
+        className="font-display absolute pointer-events-none select-none"
+        style={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          fontSize: "200px",
+          fontWeight: 300,
+          color: "rgba(255,255,255,0.02)",
+          letterSpacing: "-4px",
+          whiteSpace: "nowrap",
+          zIndex: 0,
+          lineHeight: 1,
+        }}
+      >
+        LUCIANI
+      </span>
+      <div className="container-x relative" style={{ zIndex: 1 }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x md:divide-[rgba(255,255,255,0.06)]">
           <div className="md:px-4">
             <Stat target={17} suffix="+" label="Années au barreau" />
           </div>
