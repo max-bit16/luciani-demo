@@ -29,11 +29,19 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Étude Luciani — Avocat à Dudelange, Luxembourg" },
+      {
+        name: "description",
+        content:
+          "Cabinet d'avocats à Dudelange, Grand-Duché de Luxembourg. Maître Tom Luciani, Barreau de Luxembourg depuis 2007. Droit civil, pénal, commercial et administratif.",
+      },
+      { name: "author", content: "Étude Luciani" },
+      { property: "og:title", content: "Étude Luciani — Avocat à Dudelange" },
+      {
+        property: "og:description",
+        content:
+          "Cabinet d'avocats à Dudelange. Droit civil, pénal, commercial et administratif. Consultations en LU, FR, DE, EN.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -42,6 +50,12 @@ export const Route = createRootRoute({
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Inter:wght@400;500&display=swap",
       },
     ],
   }),
@@ -52,7 +66,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>
