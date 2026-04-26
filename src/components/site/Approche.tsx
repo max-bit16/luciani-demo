@@ -67,7 +67,7 @@ export function Approche() {
       <div className="container-x relative" style={{ zIndex: 1 }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div ref={txt} className="reveal flex flex-col gap-6">
-            <span className="label-pill self-start">Notre approche</span>
+            <span className="label-pill-section self-start">Notre approche</span>
             <H2Reveal className="t-h2">
               {["Rigueur et humanité,", <br key="br" />, "à chaque étape"]}
             </H2Reveal>

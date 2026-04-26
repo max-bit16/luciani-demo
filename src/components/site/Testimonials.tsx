@@ -18,7 +18,7 @@ const reviews: Review[] = [
   {
     name: "Joelle Brink",
     quote:
-      "La profession juridique a besoin de plus d'avocats comme vous — intelligents, passionnés, débrouillards, résilients et compatissants.",
+      "La profession juridique a besoin de plus d'avocats comme vous, intelligents, passionnés, débrouillards, résilients et compatissants.",
   },
   {
     name: "manu hous",
@@ -82,7 +82,7 @@ export function Testimonials() {
           ref={head}
           className="reveal text-center mb-16 flex flex-col items-center gap-5"
         >
-          <span className="label-pill">Avis clients</span>
+          <span className="label-pill-section">Avis clients</span>
           <H2Reveal className="t-h2">Ce que disent nos clients</H2Reveal>
           <p
             className="t-body-lg max-w-xl mx-auto"
@@ -122,7 +122,7 @@ export function Testimonials() {
                 fontSize: "96px",
                 lineHeight: 0.8,
                 fontWeight: 300,
-                color: "rgba(245,242,239,1)",
+                color: "rgba(184, 146, 74, 0.15)",
                 zIndex: 0,
               }}
             >

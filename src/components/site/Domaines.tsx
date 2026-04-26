@@ -87,7 +87,7 @@ function ServiceCard({ card, delay }: { card: Card; delay: number }) {
             className="t-caption"
             style={{ color: "var(--ink-3)" }}
           >
-            — {b}
+            {b}
           </li>
         ))}
       </ul>
@@ -106,7 +106,7 @@ export function Domaines() {
       <span className="deco-number" aria-hidden="true">01</span>
       <div className="container-x relative" style={{ zIndex: 1 }}>
         <div ref={head} className="reveal text-center mb-16 flex flex-col items-center gap-5">
-          <span className="label-pill">Nos domaines</span>
+          <span className="label-pill-section">Nos domaines</span>
           <H2Reveal className="t-h2 max-w-2xl">
             {["Une expertise complète", <br key="br" />, "pour chaque situation"]}
           </H2Reveal>

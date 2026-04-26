@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useParallax } from "@/hooks/useParallax";
 import { Magnetic } from "@/components/anim/Magnetic";
+import heroMobileJpg from "@/assets/luxembourg-hero-mobile.jpg";
+import heroMobileWebp from "@/assets/luxembourg-hero-mobile.webp";
 
 const H1_LINE_1 = "Défendre vos intérêts";
 const H1_LINE_2 = "au Grand-Duché";
@@ -29,7 +31,7 @@ export function Hero() {
     return () => window.clearTimeout(t);
   }, [entered]);
 
-  const renderLine = (line: string, startIndex: number) =>
+  const renderLine = (line: string, startIndex: number, color?: string) =>
     line.split(" ").map((word, i) => {
       const idx = startIndex + i;
       return (
@@ -38,7 +40,7 @@ export function Hero() {
           className="word-reveal"
           style={{ ["--word-delay" as string]: `${idx * 60}ms` }}
         >
-          <span>{word}</span>
+          <span style={color ? { color } : undefined}>{word}</span>
         </span>
       );
     });
@@ -54,12 +56,13 @@ export function Hero() {
       style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}
     >
       <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
-        <picture className="block md:hidden absolute inset-0 w-full h-full">
-          <source srcSet="/images/luxembourg-hero-mobile.webp" type="image/webp" />
+        <picture>
+          <source srcSet={heroMobileWebp} type="image/webp" media="(max-width: 767px)" />
+          <source srcSet={heroMobileJpg} type="image/jpeg" media="(max-width: 767px)" />
           <img
-            src="/images/luxembourg-hero-mobile.jpg"
+            src={heroMobileJpg}
             alt="Vue du signe Luxembourg au coucher du soleil, Grand-Duché de Luxembourg"
-            className="absolute inset-0 w-full h-full object-cover kenburns"
+            className="block md:hidden absolute inset-0 w-full h-full object-cover kenburns"
             style={{ objectPosition: "center 70%" }}
             loading="eager"
             decoding="async"
@@ -99,7 +102,21 @@ export function Hero() {
             className={`hero-enter ${entered ? "entered" : ""}`}
             style={{ ["--enter-delay" as string]: "80ms" } as React.CSSProperties}
           >
-            <span className="label-pill">Barreau de Luxembourg · Depuis 2007</span>
+            <span className="label-pill">
+              <span
+                aria-hidden="true"
+                style={{
+                  color: "#B8924A",
+                  fontSize: "8px",
+                  marginRight: "4px",
+                  verticalAlign: "middle",
+                  lineHeight: 1,
+                }}
+              >
+                ●
+              </span>
+              Barreau de Luxembourg · Depuis 2007
+            </span>
           </div>
 
           <h1
@@ -107,9 +124,9 @@ export function Hero() {
             className={`hero-enter ${entered ? "entered" : ""} t-h1`}
             style={{ ["--enter-delay" as string]: "200ms" } as React.CSSProperties}
           >
-            {renderWordsWithSpaces(renderLine(H1_LINE_1, 0))}
+            {renderWordsWithSpaces(renderLine(H1_LINE_1, 0, "#000000"))}
             <br />
-            {renderWordsWithSpaces(renderLine(H1_LINE_2, line1Words.length))}
+            {renderWordsWithSpaces(renderLine(H1_LINE_2, line1Words.length, "#B8924A"))}
           </h1>
 
           <p

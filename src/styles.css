@@ -138,6 +138,12 @@
   --line: #e5e5e5;
   --line-soft: rgba(0, 0, 0, 0.05);
 
+  /* Accent palette — gold & navy */
+  --color-gold: #B8924A;
+  --color-gold-dim: rgba(184, 146, 74, 0.12);
+  --color-gold-ink: #8a6a2e;
+  --color-navy: #0B1829;
+
   /* Shadow system — inset 0.5px obligatoire */
   --shadow-inset-edge: rgba(0, 0, 0, 0.075) 0 0 0 0.5px inset;
   --shadow-outline-ring:
@@ -396,6 +402,24 @@
   box-shadow: var(--shadow-warm);
 }
 
+/* Section label pill — gold tint variant (do NOT use on hero badge) */
+.label-pill-section {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(184, 146, 74, 0.10);
+  color: var(--color-gold-ink);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border: 1px solid rgba(184, 146, 74, 0.25);
+  box-shadow: var(--shadow-warm);
+}
+
 /* Lang pills — hero */
 .lang-pill {
   display: inline-flex;
@@ -432,6 +456,7 @@
 .service-card {
   background: #ffffff;
   border: 1px solid var(--line);
+  border-left: 3px solid var(--color-gold);
   box-shadow: var(--shadow-outline-ring);
   border-radius: 20px;
   padding: 32px;
@@ -770,7 +795,7 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 70s linear infinite;
   will-change: transform;
 }
 @keyframes marquee-scroll {
