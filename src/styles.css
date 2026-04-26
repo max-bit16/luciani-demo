@@ -915,3 +915,9 @@
   .service-card { transform: none !important; }
   .service-card.tilt-reset { transition: none; }
 }
+
+/* Hero CTA full-width on mobile: make magnetic wrapper block so child pills fill parent */
+@media (max-width: 639px) {
+  .hero-cta-block .magnetic { display: block; }
+  .hero-cta-block .magnetic > a { display: flex; width: 100%; justify-content: center; }
+}
