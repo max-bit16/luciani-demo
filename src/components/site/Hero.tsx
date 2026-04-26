@@ -114,23 +114,19 @@ export function Hero() {
           </div>
 
           <div
-            className={`hero-enter ${entered ? "entered" : ""} flex gap-3 flex-col sm:flex-row sm:flex-wrap`}
+            className={`hero-enter hero-cta-block ${entered ? "entered" : ""} flex gap-3 flex-col sm:flex-row sm:flex-wrap`}
             style={{ ["--enter-delay" as string]: "610ms" } as React.CSSProperties}
           >
-            <div className="w-full sm:w-auto">
-              <Magnetic>
-                <a href="tel:+35220331456" className="pill-black w-full sm:w-auto justify-center">
-                  Prendre rendez-vous
-                </a>
-              </Magnetic>
-            </div>
-            <div className="w-full sm:w-auto">
-              <Magnetic>
-                <a href="#domaines" className="pill-warm w-full sm:w-auto justify-center">
-                  Nos domaines
-                </a>
-              </Magnetic>
-            </div>
+            <Magnetic>
+              <a href="tel:+35220331456" className="pill-black">
+                Prendre rendez-vous
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href="#domaines" className="pill-warm">
+                Nos domaines
+              </a>
+            </Magnetic>
           </div>
 
           <p
