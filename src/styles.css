@@ -162,3 +162,8 @@
   letter-spacing: -0.96px;
   color: var(--ink);
 }
+@media (min-width: 768px) {
+  .t-h1 {
+    font-size: 48px;
+  }
+}
