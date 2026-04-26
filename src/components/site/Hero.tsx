@@ -114,16 +114,16 @@ export function Hero() {
           </div>
 
           <div
-            className={`hero-enter ${entered ? "entered" : ""} flex gap-3 flex-wrap`}
+            className={`hero-enter ${entered ? "entered" : ""} flex gap-3 flex-col sm:flex-row sm:flex-wrap`}
             style={{ ["--enter-delay" as string]: "610ms" } as React.CSSProperties}
           >
-            <Magnetic>
-              <a href="tel:+35220331456" className="pill-black">
+            <Magnetic className="w-full sm:w-auto">
+              <a href="tel:+35220331456" className="pill-black w-full sm:w-auto justify-center">
                 Prendre rendez-vous
               </a>
             </Magnetic>
-            <Magnetic>
-              <a href="#domaines" className="pill-warm">
+            <Magnetic className="w-full sm:w-auto">
+              <a href="#domaines" className="pill-warm w-full sm:w-auto justify-center">
                 Nos domaines
               </a>
             </Magnetic>
