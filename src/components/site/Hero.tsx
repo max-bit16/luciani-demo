@@ -31,6 +31,15 @@ const heroMobileSizes = "(max-width: 767px) 100vw, 0px";
 const H1_LINE_1 = "Défendre vos intérêts";
 const H1_LINE_2 = "au Grand-Duché";
 
+// Hide any image that fails to load so its alt text never leaks into the
+// hero. The CSS background-image fallback on .hero-bg keeps the photo
+// visible even when JS or every variant somehow fails.
+const hideOnError: React.ReactEventHandler<HTMLImageElement> = (e) => {
+  const img = e.currentTarget;
+  img.style.visibility = "hidden";
+  img.setAttribute("data-failed", "true");
+};
+
 export function Hero() {
   const [entered, setEntered] = useState(false);
   const h1Ref = useRef<HTMLHeadingElement>(null);
@@ -79,7 +88,16 @@ export function Hero() {
       className="relative overflow-hidden"
       style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}
     >
-      <div ref={parallaxRef} className="absolute inset-0 parallax-wrap">
+      <div
+        ref={parallaxRef}
+        className="absolute inset-0 parallax-wrap hero-bg"
+        style={{
+          backgroundImage: `url(${heroMobileJpg768})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center 70%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <picture>
           <source
             type="image/webp"
@@ -105,13 +123,21 @@ export function Hero() {
             fetchPriority="high"
             width={1920}
             height={1280}
+            onError={hideOnError}
           />
         </picture>
         <img
-          src="https://source.unsplash.com/vBKCJbjH8cs/1920x1080"
-          alt="Architecture contemporaine de la Philharmonie de Luxembourg"
+          src={heroMobileJpg}
+          srcSet={`${heroMobileJpg768} 768w, ${heroMobileJpg1280} 1280w, ${heroMobileJpg} 1920w`}
+          sizes="(min-width: 768px) 100vw, 0px"
+          alt=""
+          aria-hidden="true"
           className="hidden md:block absolute inset-0 w-full h-full object-cover object-right kenburns"
           loading="eager"
+          decoding="async"
+          width={1920}
+          height={1280}
+          onError={hideOnError}
         />
         <div
           className="absolute inset-0 md:hidden"
