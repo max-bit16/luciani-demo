@@ -152,13 +152,20 @@ export const Route = createRootRoute({
       { property: "og:site_name", content: "Étude Luciani" },
       // Twitter
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Avocat Dudelange — Étude Luciani" },
+      { name: "twitter:title", content: "Lovable App" },
       {
         name: "twitter:description",
         content:
           "Cabinet d'avocats à Dudelange, Luxembourg. Droit civil, pénal, commercial, administratif.",
       },
       { name: "twitter:image", content: OG_IMAGE },
+      { title: "Lovable App" },
+      { property: "og:title", content: "Lovable App" },
+      { name: "description", content: "A legal services website showcasing expertise in Luxembourg law with a focus on civil, criminal, and commercial matters." },
+      { property: "og:description", content: "A legal services website showcasing expertise in Luxembourg law with a focus on civil, criminal, and commercial matters." },
+      { name: "twitter:description", content: "A legal services website showcasing expertise in Luxembourg law with a focus on civil, criminal, and commercial matters." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/08fd1cce-96fc-41b4-980d-079991f6b237/id-preview-d151ebe4--bd5e2686-5bd8-424b-8740-dbc348cd8a98.lovable.app-1777271952506.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/08fd1cce-96fc-41b4-980d-079991f6b237/id-preview-d151ebe4--bd5e2686-5bd8-424b-8740-dbc348cd8a98.lovable.app-1777271952506.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
