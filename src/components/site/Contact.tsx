@@ -144,7 +144,7 @@ export function Contact() {
                 className="font-display mt-3"
                 style={{ fontSize: "32px", color: "#B8924A", fontWeight: 300 }}
               >
-                20 33 14 56
+                +352 20 33 14 56
               </p>
               <p className="t-caption mt-1" style={{ color: "var(--ink-3)" }}>
                 Permanence : 14h00 – 18h00
